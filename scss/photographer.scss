@@ -1,7 +1,4 @@
-#contact_modal {
-    display: none;
-}
-
+/***** Photograph header *****/
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
@@ -21,6 +18,10 @@
     cursor: pointer;
 }
 
+/** Modal **/
+#contact_modal {
+    display: none;
+}
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
@@ -87,4 +88,44 @@ form textarea{
     height: 200px;
     border: none;
     border-radius: 5px;
+}
+
+/** Dropdown sort **/
+.dropdown-content{
+    background-color: #901C1C;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 5px;
+    padding: 10px 20px 5px 10px;
+    width: 170px;
+    padding-left: 20px;
+    margin-top: -20px;
+
+    > p{
+        vertical-align: middle;
+    }
+
+    > .p-line{
+        border-bottom: white solid 1px;
+        border-top: white solid 1px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+.fa-angle-down{
+    position: absolute;
+    margin-left: 50px;
+}
+#pictures-sort{
+    display: flex;
+    margin: 30px 0px 30px 100px;
+}
+#label{
+    margin-right: 20px;
+    font-weight: 700;
+    font-size: 18px;
+}
+.dropbtn{
+    display: none;
 }

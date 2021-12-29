@@ -1,3 +1,4 @@
+// creation of each photographer card on index page
 function photographerFactory(data) {
     const { name, portrait, city, country, tagline, price} = data;
 

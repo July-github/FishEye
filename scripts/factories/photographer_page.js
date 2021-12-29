@@ -1,3 +1,4 @@
+//creation DOM photographer header on his page
 function photographerPage(data) {
     const { name, portrait, city, country, tagline} = data;
 

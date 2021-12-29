@@ -1,3 +1,15 @@
+// display photographher page
+/***** Display dropdown *****/
+function displayDropbtn(){
+	const dropbtn = [...document.getElementsByClassName("dropbtn")]
+	const clickDropbtn = document.getElementById("title-sort")
+
+	clickDropbtn.addEventListener("click", function (){
+		dropbtn.map(drop => drop.style.display = "block");
+	})
+}
+displayDropbtn()
+
 async function getMedias() {
     const media = [
 		{
@@ -62,7 +74,7 @@ async function getMedias() {
 			"likes": 24,
 			"date": "2011-12-08",
 			"price": 100
-		  },
+		},
 		{
 			"id": 7502053,
 			"photographerId": 82,
@@ -334,7 +346,7 @@ async function getMedias() {
 			"likes": 142,
 			"date": "2019-08-23",
 			"price": 60
-		  },
+		},
 		{
 			"id": 95234343,
 			"photographerId": 243,
@@ -425,7 +437,7 @@ async function getMedias() {
 			"likes": 57,
 			"date": "2020-01-20",
 			"price": 65
-		  },
+		},
 		{
 			"id": 3523523534,
 			"photographerId": 195,
@@ -443,7 +455,7 @@ async function getMedias() {
 			"likes": 150,
 			"date": "2018-02-30",
 			"price": 70
-		  },
+		},
 		{
 			"id": 235234343,
 			"photographerId": 930,
@@ -538,5 +550,3 @@ async function getMedias() {
     return ({
         media: [...media]})
 }
-
-
