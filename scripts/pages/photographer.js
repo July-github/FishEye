@@ -5,22 +5,21 @@ function displayDropbtn(){
 	const clickDropbtn = document.getElementById("title-sort")
 	const arrow = document.getElementById("arrow")
 
-	clickDropbtn.addEventListener("click", function(e){
-		dropbtn.map(drop => drop.style.display = "block");
-		arrow.removeAttribute('class', 'fa fa-angle-down');
-		arrow.setAttribute('class', 'fa fa-angle-up');
-		clickDropbtn.setAttribute('id', 'arrow_up');
-
-	if(e.target.className == 'fa-angle-up'){
-	const arrowUp = document.getElementById("arrow_up")
-	arrowUp.addEventListener("click", function(){
-		dropbtn.map(drop => drop.style.display = "none");
-		arrow.removeAttribute('class', 'fa fa-angle-up');
-		clickDropbtn.removeAttribute('id', 'arrow_up');
-		arrow.setAttribute('class', 'fa fa-angle-down');
-	})}
-})
+	clickDropbtn.addEventListener("click", function(){
+		if(arrow.classList.contains('fa-angle-up')){
+			dropbtn.map(drop => drop.style.display = "none");
+			arrow.removeAttribute('class', 'fa fa-angle-up');
+			clickDropbtn.removeAttribute('id', 'arrow_up');
+			arrow.setAttribute('class', 'fa fa-angle-down');
+		}else{
+			dropbtn.map(drop => drop.style.display = "block");
+			arrow.removeAttribute('class', 'fa fa-angle-down');
+			arrow.setAttribute('class', 'fa fa-angle-up');
+			clickDropbtn.setAttribute('id', 'arrow_up');
+		}
+	})
 }
+
 displayDropbtn()
 
 async function getMedias() {
