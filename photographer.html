@@ -10,7 +10,9 @@
   </head>
   <body>
     <header>
+      <a href='./index.html'>
       <img src="assets/images/logo.png" class="logo" />
+      </a>
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -25,6 +27,8 @@
             <p class="dropbtn">Titre</p>
           </div>
         </div>
+      </div>
+      <div class="picture-card-grid"></div>
     </main>
     <div id="contact_modal">
 			<div class="modal">
@@ -53,9 +57,12 @@
 				</form>
 			</div>
 		</div>
-    <script src="scripts/pages/photographer.js"></script>
-    <script src="scripts/factories/photographer.js"></script>
-    <script src="scripts/factories/photographer_page.js"></script>
+    <script src="scripts/pages/photographer.js" type="module"></script>
+    <script src="scripts/factories/photographer.js" type="module"></script>
+    <script src="scripts/models/ThumbPicture.js"></script>
+    <script src="scripts/templates/PictureCard.js"></script>
+    <script src="scripts/Api.js/Api.js"></script>
+    <script src="scripts/App.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>

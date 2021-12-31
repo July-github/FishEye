@@ -1,4 +1,40 @@
 // display index page
+import{listenToClickPhotographer} from '../utils/idPhotographer.js';
+listenToClickPhotographer();
+
+function photographerFactory(data) {
+    const { name, id, portrait, city, country, tagline, price} = data;
+
+    const picture = `Sample Photos/Photographers ID Photos/${portrait}`;
+    const rate = price;
+
+    function getUserCardDOM() {
+        const article = document.createElement( 'article' );
+        article.setAttribute('id', id);
+        const link = document.createElement( 'a' );
+        link.setAttribute('href', '../photographer.html')
+        const img = document.createElement( 'img' );
+        img.setAttribute("src", picture)
+        const h2 = document.createElement( 'h2' );
+        const place = document.createElement( 'h3' );
+        const tag = document.createElement( 'span' );
+        const unit = document.createElement( 'p' );
+        place.textContent = city + ', ' + country;
+        tag.textContent = tagline;
+        unit.textContent = rate + '€/jour';
+        h2.textContent = name;
+        article.appendChild(link);
+        link.appendChild(img);
+        link.appendChild(h2);
+        link.appendChild(place);
+        link.appendChild(tag);
+        link.appendChild(unit);
+        return (article);
+    }
+    
+    return { name, picture, getUserCardDOM }
+}
+
 async function getPhotographers() {
     const photographers = [
             {
@@ -76,4 +112,4 @@ async function init() {
     displayData(photographers);
 }
     
-init(); 
+init();

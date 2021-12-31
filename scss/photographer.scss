@@ -1,21 +1,29 @@
 /***** Photograph header *****/
 .photograph-header {
+    display: flex;
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
 }
 
 .contact_button {
+    order: 2;
     font-size: 20px;
     font-weight: bold;
     color: white;
     padding: 11px;
+    margin: auto;
     width: 170px;
     height: 70px;
     border: none;
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+
+    &:hover{
+        background-color: #DB8876;
+        color: black;
+    }
 }
 
 /** Modal **/
@@ -94,13 +102,19 @@ form textarea{
 .dropdown-content{
     background-color: #901C1C;
     color: white;
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 20px;
+    font-weight: bold;
     border-radius: 5px;
     padding: 10px 20px 5px 10px;
     width: 170px;
     padding-left: 20px;
     margin-top: -20px;
+    cursor: pointer;
+
+    &:hover{
+        background-color: #DB8876;
+        color: black;    
+    }
 
     > p{
         vertical-align: middle;

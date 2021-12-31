@@ -1,8 +1,8 @@
-//creation of thumbs
-class Thumb {
+//thumbs creation get data
+class ThumbPicture {
     constructor (data){
         this._image = data.image
-        this._title = data._title
+        this._title = data.title
         this._likes = data.likes
     }
 
@@ -15,6 +15,6 @@ class Thumb {
     }
 
     get likes(){
-        return this.likes
+        return (this._likes + " <i class='fas fa-heart'></i>")
     }
 }
