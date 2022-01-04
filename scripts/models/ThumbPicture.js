@@ -1,5 +1,5 @@
-//thumbs creation get data
-class ThumbPicture {
+//thumbs creation to get data
+export class ThumbPicture {
     constructor (data){
         this._image = data.image
         this._title = data.title

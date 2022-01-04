@@ -1,4 +1,8 @@
-class App {
+import { PictureCard} from './templates/PictureCard.js';
+import {ThumbPicture} from './models/ThumbPicture.js';
+import {PictureApi} from './Api.js/Api.js';
+
+export class App {
     constructor(){
         // instanciation of thumbs
         this.pictureGrid = document.querySelector('.picture-card-grid')
@@ -17,5 +21,5 @@ class App {
     }
 }
 
-const app = new App()
-app.main()
+//const app = new App()
+//app.main()

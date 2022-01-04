@@ -1,18 +1,16 @@
 // display index page
-import{listenToClickPhotographer} from '../utils/idPhotographer.js';
-listenToClickPhotographer();
 
 function photographerFactory(data) {
     const { name, id, portrait, city, country, tagline, price} = data;
 
     const picture = `Sample Photos/Photographers ID Photos/${portrait}`;
     const rate = price;
-
+    
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
-        article.setAttribute('id', id);
         const link = document.createElement( 'a' );
-        link.setAttribute('href', '../photographer.html')
+        article.setAttribute('id', id);
+        link.setAttribute('href', `../photographer.html?id=${id}`)
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
         const h2 = document.createElement( 'h2' );
