@@ -153,7 +153,7 @@ form textarea{
     color: white;
     font-size: 20px;
     border-radius: 5px;
-    padding: 10px 0px 5px 20px;
+    padding: 5px 0px 5px 20px;
     width: 170px;
     margin-top: -20px;
     cursor: pointer;
@@ -191,4 +191,59 @@ form textarea{
 }
 .dropbtn{
     display: none;
+}
+
+/** Pictures Grid **/
+.picture-card-grid{
+    display:grid;
+    grid-template-columns: 30% 30% 30%;
+    justify-content: space-between;
+    align-items: stretch;
+    margin: 0 100px;
+
+    & img{
+        object-fit: cover;
+    }
+
+    & span, h3{
+        color: #901C1C;
+        font-size: 24px;
+        font-weight: 400;
+        margin: 0;
+    }
+
+    & i{
+        background-color: #911C1C;
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        font-size: 24px;
+        margin-left: 5px;
+    }
+}
+.picture_text{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: flex-end;
+    padding: 20px 0;
+}
+
+.medias-likes{
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    position: absolute;
+    bottom: 0;
+    right: 30px;
+    padding: 20px 30px;
+    background-color: #DB8876;
+    font-size: 24px;
+    color: black;
+    font-weight: 500;
+    border-radius: 5px 5px 0 0;
+
+    & i{
+        font-size: 20px;
+    }
 }
