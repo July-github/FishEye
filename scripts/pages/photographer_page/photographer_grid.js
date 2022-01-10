@@ -1,7 +1,12 @@
 /***** Display pictures *****/
-import {getId} from '../photographer.js';
+//import {sortPictures} from './photographer_sort.js';
+import { getId } from '../photographer.js';
+import {listenToDisplayLightbox} from './lightbox.js';
+import {getPhotographersData, displayHeaderData} from './photographer_header.js';
+import {sortPictures} from './photographer_sort.js';
 
-export async function getPhotographersPicturesData() {
+async function getPhotographersPicturesData() {
+
     const photographersPictures = [
 		{
 			"id": 342550,
@@ -543,49 +548,106 @@ export async function getPhotographersPicturesData() {
 }
 
 function photographerGrid(data){
-    const { title, likes, image } = data;
+	const { title, likes, image, id } = data;
 
-    const picture = `Sample Photos/${image}`;
+	const picture = `Sample Photos/**/${image}`;
 	const card = document.createElement('div');
+	card.setAttribute('class', 'picture_card');
+	card.setAttribute('id', id);
 
 	const img = document.createElement( 'img' );
-	img.setAttribute('src', picture)
+	img.setAttribute('src', picture);
 	card.appendChild(img);
 
 	const cardText = document.createElement('div');
 	cardText.setAttribute('class', 'picture_text');
-	card.appendChild(cardText);
-	const cardTitle = document.createElement('h3');
 	const cardLikes = document.createElement('div');
 	cardLikes.setAttribute('class', 'likes');
 	const likesNumber = document.createElement('span');
 	likesNumber.setAttribute('class', 'like-picture');
 	const likesHeart = document.createElement('i');
 	likesHeart.setAttribute('class', 'fas fa-heart');
-	cardTitle.textContent = title;
+	cardText.textContent = title;
+	card.appendChild(cardText);
 	likesNumber.textContent = likes;
-	cardText.appendChild(cardTitle);
 	const likesText = cardText.appendChild(cardLikes);
 	likesText.appendChild(likesNumber);
 	likesText.appendChild(likesHeart);
-	
+		
 	return card
 }
 
+function photographerGallery(data){
+    const { title, image, id } = data;
+
+    const picture = `Sample Photos/**/${image}`;
+	const slide = document.createElement('div');
+	slide.setAttribute('class', 'picture-gallery');
+	slide.setAttribute('id', id);
+
+	const arrowLeftDiv = document.createElement('div');
+	arrowLeftDiv.setAttribute('id', 'fa-angle')
+	slide.appendChild(arrowLeftDiv);
+	const arrowLeft = document.createElement('i');
+	arrowLeft.setAttribute('class', 'fas fa-angle-left');
+	arrowLeftDiv.appendChild(arrowLeft);
+
+	const boxSlide = document.createElement('div');
+	boxSlide.setAttribute('id', 'box');
+	slide.appendChild(boxSlide);
+	const img = document.createElement( 'img' );
+	img.setAttribute('src', picture);
+	boxSlide.appendChild(img);
+	const slideText = document.createElement('h3');
+	slideText.setAttribute('class', 'picture-title');
+	slideText.textContent = title;
+	boxSlide.appendChild(slideText);
+
+	const arrowRightDiv = document.createElement('div');
+	arrowRightDiv.setAttribute('id', 'box-next')
+	slide.appendChild(arrowRightDiv);
+	const crossRight = document.createElement('i');
+	crossRight.setAttribute('class', 'fas fa-times');
+	arrowRightDiv.appendChild(crossRight);
+	const arrowRight = document.createElement('i');
+	arrowRight.setAttribute('class', 'fas fa-angle-right');
+	arrowRightDiv.appendChild(arrowRight);
+
+	return slide
+}
+
 export async function displayPictures(photographersPictures){
-	const photographersGrid = document.querySelector(".picture-card-grid");
+	const photographersGrid = document.querySelector('.picture-card-grid');
+	const photographersGallery = document.querySelector('#lightbox');
+
+	let userPictures = []
 
 	photographersPictures.forEach((photographersPicture) => {
 		if(photographersPicture.photographerId == getId()){
 			const photographerPictureModel = photographerGrid(photographersPicture);
-			photographersGrid.appendChild(photographerPictureModel);	
+			photographersGrid.appendChild(photographerPictureModel);
+			const photographerGalleryModel = photographerGallery(photographersPicture)
+			photographersGallery.appendChild(photographerGalleryModel);
+			userPictures.push(photographersPicture)
 		}
 	})
+	console.log(userPictures)
+	return userPictures
+}
+
+async function display() {
+    // Récupère les datas des photographes
+    const { photographersDatas } = await getPhotographersData();
+	const { photographersPictures } = await getPhotographersPicturesData();
+
+	displayHeaderData(photographersDatas);
+	const userGrid = await displayPictures(photographersPictures);
+	console.log(userGrid)
+	sortPictures(userGrid);
+	listenToDisplayLightbox();
 }
 
 /***** Medias likes *****/
-import {display} from '../photographer.js';
-
 export async function displayPicturesInfo(){
 
 	await display();
@@ -616,4 +678,5 @@ export async function displayPicturesInfo(){
 		return newLikeNum, newSum
 		})		
 	);
+
 }

@@ -71,9 +71,14 @@
     border-radius: 50%;
 }
 
-/** Modal **/
+/***** Modal *****/
 #contact_modal {
     display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    top: 0;
 }
 .modal {
     border-radius: 5px;
@@ -147,7 +152,7 @@ form textarea{
     margin: 0;
 }
 
-/** Dropdown sort **/
+/***** Dropdown sort *****/
 .dropdown-content{
     background-color: #901C1C;
     color: white;
@@ -193,7 +198,7 @@ form textarea{
     display: none;
 }
 
-/** Pictures Grid **/
+/***** Pictures Grid *****/
 .picture-card-grid{
     display:grid;
     grid-template-columns: 30% 30% 30%;
@@ -205,7 +210,7 @@ form textarea{
         object-fit: cover;
     }
 
-    & span, h3{
+    & span, .picture_text{
         color: #901C1C;
         font-size: 24px;
         font-weight: 400;
@@ -233,7 +238,7 @@ form textarea{
     display: flex;
     justify-content: space-between;
     width: 300px;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     right: 30px;
     padding: 20px 30px;
@@ -246,4 +251,61 @@ form textarea{
     & i{
         font-size: 20px;
     }
+}
+
+/***** Lightbox *****/
+#lightbox{
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    position: absolute;
+    top: 0;
+}
+.picture-gallery{
+    display: none;
+    justify-content: space-between;
+    margin: auto;
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+    height:90%;
+    width: 90%;
+    background-color: white;
+
+    & i{
+        font-size: 50px;
+        background-color: #901C1C;
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
+
+    & h3{
+        font-size: 24px;
+        color: #901C1C;
+        text-align: left;
+    }
+}
+#box{
+    width: 90%;
+
+    > img{
+        border-radius: 5px;
+        object-fit: cover;
+    }
+}
+#box-next{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height:50%;
+}
+#fa-angle{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height:50%;
 }
