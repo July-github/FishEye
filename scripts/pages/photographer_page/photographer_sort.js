@@ -1,19 +1,21 @@
 /***** Dropdown filters *****/
+import {displayPictures} from './photographer_grid.js';
 
-export async function sortPictures(data){
-
+export async function sortPictures(data){    
     const likesSort = document.getElementById('Likes');
     const dateSort = document.getElementById('Date');
     const titleSort = document.getElementById('Title');
 console.log(1)
 
     likesSort.addEventListener('click', function(){
+        displayPictures ([])
         sortByLikes(data)});
     dateSort.addEventListener('click', function(){
+        displayPictures ([])
         sortByDate(data)});
     titleSort.addEventListener('click', function(){
+        displayPictures ([])
         sortByTitle(data)});
-
 }
 
 function sortByDate(data){
@@ -29,10 +31,12 @@ function sortByDate(data){
         }
         return 0;
     });
+    
+    return displayPictures (data)
 }
 
 function sortByLikes(data){
-        data.sort(function compare(a, b) {
+    data.sort(function compare(a, b) {
         if (a.likes < b.likes){
         console.log('like1')
             return 1;
@@ -41,6 +45,8 @@ function sortByLikes(data){
             return -1;
         }return 0;
     });
+
+    return displayPictures (data)
 }
 
 function sortByTitle(data){
@@ -51,4 +57,5 @@ function sortByTitle(data){
             return 1;
         return 0;
     });
+    return displayPictures (data)
 }

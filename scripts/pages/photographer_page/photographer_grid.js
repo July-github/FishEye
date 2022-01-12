@@ -547,10 +547,10 @@ async function getPhotographersPicturesData() {
         photographersPictures: [...photographersPictures]})
 }
 
-function photographerGrid(data){
+function photographerGrid(data, idPhotographer){
 	const { title, likes, image, id } = data;
 
-	const picture = `Sample Photos/**/${image}`;
+	const picture = `Sample Photos/${idPhotographer}/${image}`;
 	const card = document.createElement('div');
 	card.setAttribute('class', 'picture_card');
 	card.setAttribute('id', id);
@@ -567,8 +567,10 @@ function photographerGrid(data){
 	likesNumber.setAttribute('class', 'like-picture');
 	const likesHeart = document.createElement('i');
 	likesHeart.setAttribute('class', 'fas fa-heart');
-	cardText.textContent = title;
+	const text = document.createElement('h3');
+	text.textContent = title;
 	card.appendChild(cardText);
+	cardText.appendChild(text);
 	likesNumber.textContent = likes;
 	const likesText = cardText.appendChild(cardLikes);
 	likesText.appendChild(likesNumber);
@@ -577,62 +579,20 @@ function photographerGrid(data){
 	return card
 }
 
-function photographerGallery(data){
-    const { title, image, id } = data;
-
-    const picture = `Sample Photos/**/${image}`;
-	const slide = document.createElement('div');
-	slide.setAttribute('class', 'picture-gallery');
-	slide.setAttribute('id', id);
-
-	const arrowLeftDiv = document.createElement('div');
-	arrowLeftDiv.setAttribute('id', 'fa-angle')
-	slide.appendChild(arrowLeftDiv);
-	const arrowLeft = document.createElement('i');
-	arrowLeft.setAttribute('class', 'fas fa-angle-left');
-	arrowLeftDiv.appendChild(arrowLeft);
-
-	const boxSlide = document.createElement('div');
-	boxSlide.setAttribute('id', 'box');
-	slide.appendChild(boxSlide);
-	const img = document.createElement( 'img' );
-	img.setAttribute('src', picture);
-	boxSlide.appendChild(img);
-	const slideText = document.createElement('h3');
-	slideText.setAttribute('class', 'picture-title');
-	slideText.textContent = title;
-	boxSlide.appendChild(slideText);
-
-	const arrowRightDiv = document.createElement('div');
-	arrowRightDiv.setAttribute('id', 'box-next')
-	slide.appendChild(arrowRightDiv);
-	const crossRight = document.createElement('i');
-	crossRight.setAttribute('class', 'fas fa-times');
-	arrowRightDiv.appendChild(crossRight);
-	const arrowRight = document.createElement('i');
-	arrowRight.setAttribute('class', 'fas fa-angle-right');
-	arrowRightDiv.appendChild(arrowRight);
-
-	return slide
+export async function filterPictures(datas){
+	const idPhotographer = getId();
+	const userGrid = datas.filter(data => data.photographerId == idPhotographer)
+	return userGrid
 }
 
 export async function displayPictures(photographersPictures){
 	const photographersGrid = document.querySelector('.picture-card-grid');
-	const photographersGallery = document.querySelector('#lightbox');
-
-	let userPictures = []
+	const idPhotographer = getId();
 
 	photographersPictures.forEach((photographersPicture) => {
-		if(photographersPicture.photographerId == getId()){
-			const photographerPictureModel = photographerGrid(photographersPicture);
-			photographersGrid.appendChild(photographerPictureModel);
-			const photographerGalleryModel = photographerGallery(photographersPicture)
-			photographersGallery.appendChild(photographerGalleryModel);
-			userPictures.push(photographersPicture)
-		}
+		const photographerPictureModel = photographerGrid(photographersPicture, idPhotographer);
+		photographersGrid.appendChild(photographerPictureModel);
 	})
-	console.log(userPictures)
-	return userPictures
 }
 
 async function display() {
@@ -641,10 +601,10 @@ async function display() {
 	const { photographersPictures } = await getPhotographersPicturesData();
 
 	displayHeaderData(photographersDatas);
-	const userGrid = await displayPictures(photographersPictures);
-	console.log(userGrid)
+	const userGrid = await filterPictures(photographersPictures);
+	displayPictures(userGrid);
 	sortPictures(userGrid);
-	listenToDisplayLightbox();
+	listenToDisplayLightbox(userGrid);
 }
 
 /***** Medias likes *****/

@@ -1,49 +1,92 @@
 //Display lightbox
 /***** Display lightbox *****/
 
-function displayLightbox(e, card, n) {
+function photographerGallery(title, image){
 
+	const boxSlide = document.querySelector('#box');
+	const img = document.createElement( 'img' );
+	img.setAttribute('src', image);
+	boxSlide.appendChild(img);
+	const slideText = document.createElement('h3');
+	slideText.setAttribute('class', 'picture-title');
+	slideText.textContent = title;
+	boxSlide.appendChild(slideText);
+
+	return boxSlide
+}
+
+function displayLightbox(title, image){
+    const pictureGallery = document.getElementById('lightbox');
+
+    const photographerGalleryModel = photographerGallery(title, image)
+    pictureGallery.appendChild(photographerGalleryModel);
+}
+
+function resetLightbox(){
+	const boxSlide = document.querySelector('#box');
+    const boxImg = document.querySelector("#box > img");
+    const boxTitle = document.querySelector("#box > h3");
+
+    boxSlide.removeChild(boxImg)
+    boxSlide.removeChild(boxTitle)}
+
+export async function listenToDisplayLightbox(title, image) {
+    const card = [...document.querySelectorAll('.picture_card > img')];
     const lightbox = document.getElementById('lightbox');
-    const pictureGallery = [...document.querySelectorAll('.picture-gallery')];
-    const goNext = [...document.querySelectorAll('.fa-angle-right')];
-    const goPrevious = [...document.querySelectorAll('.fa-angle-left')];
+    const goNext = document.querySelector('.fa-angle-right');
+    const goPrevious = document.querySelector('.fa-angle-left');
+    const backMain = document.querySelector('main');
 
-    if(e.target.src){
-        lightbox.style.display = "flex";
+    
+    for(let n=0; n<card.length; n++){
+        card[n].addEventListener('click', function(){
+            lightbox.style.display = "flex";
+            backMain.style.display = "none";
 
-        for(let j=0; j<pictureGallery.length; j++){
-            if(pictureGallery[j].id === card[n].id){
-                pictureGallery[j].style.display = 'flex';
-                // Go to next picture
-                goNext.forEach(el=>{
-                    el.addEventListener('click', function(){
-                        pictureGallery[j].style.display = 'none';
+            title = card[n].nextSibling.firstChild.textContent;
+            image = card[n].src;
 
-                        if(j === (pictureGallery.length-1)){
-                            lightbox.style.display = "none";
-                        }else{
-                            pictureGallery[j+1].style.display = 'flex';
-                            j++;
-                        }
-                    })
-                })
-                // Go to previous picture
-                goPrevious.forEach(el=>{
-                    el.addEventListener('click', function(){
-                        pictureGallery[j].style.display = 'none';
+            displayLightbox(title, image);
 
-                        if(j === 0){
-                            lightbox.style.display = "none";
-                        }else{
-                            pictureGallery[j-1].style.display = 'flex';
-                            j--;
-                        }
-                    })
-                })
-            }
-        }
-    }
+            // Go to next picture
+            goNext.addEventListener('click', function(){
+                resetLightbox();
+                if(n === card.length-1){
+                    n = 0
+                    title = card[n].nextSibling.firstChild.textContent;
+                    image = card[n].src;                
+    
+                }else{
+                    title = card[n+1].nextSibling.firstChild.textContent;
+                    image = card[n+1].src;                
+                }
+                displayLightbox(title, image);
+                n++;
+            })
+            // Go to previous picture
+            goPrevious.addEventListener('click', function(){
+                resetLightbox();
+                if(n === 0){
+                    n = card.length-1
+                    console.log(n)
+
+                    title = card[n].nextSibling.firstChild.textContent;
+                    image = card[n].src;
+                }else{
+                    console.log(n)
+
+                    title = card[n-1].nextSibling.firstChild.textContent;
+                    image = card[n-1].src;
+                }
+                console.log(n)
+                displayLightbox(title, image);
+                n--;
+                console.log(n)
+
+            })
+        })
     listenToCloseLightbox()
+    }
 }
 
 /***** Close lightbox *****/
@@ -54,19 +97,11 @@ function closeLightbox() {
 
 function listenToCloseLightbox(){
     const cross = [...document.querySelectorAll("i.fas.fa-times")];
+    const backMain = document.querySelector('main');
 
     cross.map(cros => cros.addEventListener('click', function(){
-            closeLightbox()
+            closeLightbox();
+            backMain.style.display = "block";
         })  
     )  
-}
-
-export async function listenToDisplayLightbox(){
-    const card = [...document.querySelectorAll('.picture_card')];
-    
-    for(let n=0; n<card.length; n++){
-        card[n].addEventListener('click', function(e){
-            displayLightbox(e, card, n);
-        })
-    }
 }
