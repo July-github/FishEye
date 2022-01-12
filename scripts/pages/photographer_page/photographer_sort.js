@@ -1,5 +1,6 @@
 /***** Dropdown filters *****/
-import {displayPictures} from './photographer_grid.js';
+import {displayPictures, computeLikes} from './photographer_grid.js';
+import {listenToDisplayLightbox} from './lightbox.js';
 
 export async function sortPictures(data){    
     const likesSort = document.getElementById('Likes');
@@ -10,13 +11,23 @@ export async function sortPictures(data){
     likesSort.addEventListener('click', function(){
         photographersGrid.innerHTML=''
         sortByLikes(data)
-    });
+        listenToDisplayLightbox(data);
+        computeLikes()
+        });
+
     dateSort.addEventListener('click', function(){
         photographersGrid.innerHTML=''
-        sortByDate(data)});
+        sortByDate(data)
+        listenToDisplayLightbox(data);
+        computeLikes()
+        });
+
     titleSort.addEventListener('click', function(){
         photographersGrid.innerHTML=''
-        sortByTitle(data)});
+        sortByTitle(data)
+        listenToDisplayLightbox(data);
+        computeLikes()
+        });
 }
 
 function sortByDate(data){

@@ -1,5 +1,4 @@
 /***** Display pictures *****/
-//import {sortPictures} from './photographer_sort.js';
 import { getId } from '../photographer.js';
 import {listenToDisplayLightbox} from './lightbox.js';
 import {getPhotographersData, displayHeaderData} from './photographer_header.js';
@@ -595,7 +594,7 @@ export async function displayPictures(photographersPictures){
 	})
 }
 
-async function display() {
+export async function display() {
     // Récupère les datas des photographes
     const { photographersDatas } = await getPhotographersData();
 	const { photographersPictures } = await getPhotographersPicturesData();
@@ -608,24 +607,8 @@ async function display() {
 }
 
 /***** Medias likes *****/
-export async function displayPicturesInfo(){
-
-	await display();
-
+export function computeLikes(){
 	const likePictures = document.querySelectorAll('.likes');
-
-	function displayMediasLikes(){
-		const likeMediasDOM = document.querySelector('.likes-total');		
-		const likes = [...document.querySelectorAll('.like-picture')];
-		const likePicturesNumber = likes.map(like => Number(like.textContent))
-		const sum = [...likePicturesNumber].reduce(function(a, b){
-			return a+b;
-		}, 0)
-		likeMediasDOM.innerHTML = sum + ' <i class="fas fa-heart"></i>';
-
-		return sum
-	}
-	displayMediasLikes()
 
 	likePictures.forEach(likePicture => likePicture.addEventListener('click', function (){
 		const likeNumber = likePicture.querySelector('.like-picture');
@@ -633,10 +616,20 @@ export async function displayPicturesInfo(){
 		const newLikeNum = likeNum+1;
 		likeNumber.textContent = newLikeNum;
 
-		const newSum = displayMediasLikes()+1;
+		const newSum = displaySumLikes()+1;
 
 		return newLikeNum, newSum
 		})		
 	);
+}
+export function displaySumLikes(){
+	const likeMediasDOM = document.querySelector('.likes-total');		
+	const likes = [...document.querySelectorAll('.like-picture')];
+	const likePicturesNumber = likes.map(like => Number(like.textContent))
+	const sum = [...likePicturesNumber].reduce(function(a, b){
+		return a+b;
+	}, 0)
+	likeMediasDOM.innerHTML = sum + ' <i class="fas fa-heart"></i>';
 
+	return sum
 }

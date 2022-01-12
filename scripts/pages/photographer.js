@@ -4,8 +4,9 @@ import {displayDropbtn} from '../utils/dropdown.js';
 
 displayDropbtn();
 
+
 /***** Medias likes *****/
-import {displayPicturesInfo} from './photographer_page/photographer_grid.js'
+import {displaySumLikes, computeLikes, display} from './photographer_page/photographer_grid.js'
 
 export function getId(){
     const queryString = window.location.search;
@@ -14,4 +15,11 @@ export function getId(){
     return id
 }
 
+export async function displayPicturesInfo(){
+
+	await display();
+    
+	computeLikes()
+	displaySumLikes()
+}
 displayPicturesInfo();
