@@ -167,7 +167,12 @@ form textarea{
         background-color: #DB8876;
         color: black;    
     }
-
+    > div{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
     > p{
         font-weight: 900;
         vertical-align: middle;
@@ -178,11 +183,11 @@ form textarea{
         border-top: white solid 1px;
         padding-top: 20px;
         padding-bottom: 20px;
+        margin: 0;
     }
 }
 .fa-angle-down, .fa-angle-up{
-    position: absolute;
-    margin: 3px 0 0 30px;
+    padding: 3px 20px 0 20px;
     font-size: 20px;
 }
 #pictures-sort{
@@ -238,7 +243,9 @@ form textarea{
     align-items: center;
     padding: 0px 0 10px 0;
 }
-
+.likes{
+    cursor: pointer;
+}
 .medias-likes{
     display: flex;
     justify-content: space-between;

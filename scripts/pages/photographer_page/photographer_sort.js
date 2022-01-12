@@ -5,28 +5,26 @@ export async function sortPictures(data){
     const likesSort = document.getElementById('Likes');
     const dateSort = document.getElementById('Date');
     const titleSort = document.getElementById('Title');
-console.log(1)
+	const photographersGrid = document.querySelector('.picture-card-grid');
 
     likesSort.addEventListener('click', function(){
-        displayPictures ([])
-        sortByLikes(data)});
+        photographersGrid.innerHTML=''
+        sortByLikes(data)
+    });
     dateSort.addEventListener('click', function(){
-        displayPictures ([])
+        photographersGrid.innerHTML=''
         sortByDate(data)});
     titleSort.addEventListener('click', function(){
-        displayPictures ([])
+        photographersGrid.innerHTML=''
         sortByTitle(data)});
 }
 
 function sortByDate(data){
     data.sort(function compare(a, b) {
-        console.log(2)
         if (a.date < b.date){
-            console.log('2bis')
             return -1;
         }
         if (a.date > b.date ){
-            console.log(3)
             return 1;
         }
         return 0;
@@ -38,10 +36,8 @@ function sortByDate(data){
 function sortByLikes(data){
     data.sort(function compare(a, b) {
         if (a.likes < b.likes){
-        console.log('like1')
             return 1;
         }if (a.likes > b.likes ){
-        console.log('like2')
             return -1;
         }return 0;
     });

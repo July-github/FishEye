@@ -24,11 +24,8 @@ function displayLightbox(title, image){
 
 function resetLightbox(){
 	const boxSlide = document.querySelector('#box');
-    const boxImg = document.querySelector("#box > img");
-    const boxTitle = document.querySelector("#box > h3");
-
-    boxSlide.removeChild(boxImg)
-    boxSlide.removeChild(boxTitle)}
+    boxSlide.innerHTML = '';
+}
 
 export async function listenToDisplayLightbox(title, image) {
     const card = [...document.querySelectorAll('.picture_card > img')];
@@ -100,8 +97,8 @@ function listenToCloseLightbox(){
     const backMain = document.querySelector('main');
 
     cross.map(cros => cros.addEventListener('click', function(){
-            closeLightbox();
-            backMain.style.display = "block";
-        })  
-    )  
+        resetLightbox();
+        closeLightbox();
+        backMain.style.display = "block";
+    }))  
 }
