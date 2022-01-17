@@ -27,21 +27,22 @@ function resetLightbox(){
     boxSlide.innerHTML = '';
 }
 
-export async function listenToDisplayLightbox(title, image) {
+export async function listenToDisplayLightbox() {
     const card = [...document.querySelectorAll('.picture_card > img')];
     const lightbox = document.getElementById('lightbox');
     const goNext = document.querySelector('.fa-angle-right');
     const goPrevious = document.querySelector('.fa-angle-left');
     const backMain = document.querySelector('main');
-
+    
+    console.log(card)
     
     for(let n=0; n<card.length; n++){
         card[n].addEventListener('click', function(){
             lightbox.style.display = "flex";
             backMain.style.display = "none";
 
-            title = card[n].nextSibling.firstChild.textContent;
-            image = card[n].src;
+            let title = card[n].nextSibling.firstChild.textContent;
+            let image = card[n].src;
 
             displayLightbox(title, image);
 

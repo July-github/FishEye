@@ -1,8 +1,8 @@
 /***** Display pictures *****/
 import { getId } from '../photographer.js';
-import {listenToDisplayLightbox} from './lightbox.js';
 import {getPhotographersData, displayHeaderData} from './photographer_header.js';
 import {sortPictures} from './photographer_sort.js';
+import {listenToDisplayLightbox} from './lightbox.js';
 
 async function getPhotographersPicturesData() {
 
@@ -546,17 +546,12 @@ async function getPhotographersPicturesData() {
         photographersPictures: [...photographersPictures]})
 }
 
-function photographerGrid(data, idPhotographer){
-	const { title, likes, image, id } = data;
+function photographerGrid(data){
+	const { title, likes, id } = data;
 
-	const picture = `Sample Photos/${idPhotographer}/${image}`;
 	const card = document.createElement('div');
 	card.setAttribute('class', 'picture_card');
 	card.setAttribute('id', id);
-
-	const img = document.createElement( 'img' );
-	img.setAttribute('src', picture);
-	card.appendChild(img);
 
 	const cardText = document.createElement('div');
 	cardText.setAttribute('class', 'picture_text');
@@ -568,29 +563,34 @@ function photographerGrid(data, idPhotographer){
 	likesHeart.setAttribute('class', 'fas fa-heart');
 	const text = document.createElement('h3');
 	text.textContent = title;
-	card.appendChild(cardText);
 	cardText.appendChild(text);
 	likesNumber.textContent = likes;
 	const likesText = cardText.appendChild(cardLikes);
 	likesText.appendChild(likesNumber);
 	likesText.appendChild(likesHeart);
-		
+	card.appendChild(cardText);
+
 	return card
 }
 
-export async function filterPictures(datas){
+async function filterPictures(datas){
 	const idPhotographer = getId();
 	const userGrid = datas.filter(data => data.photographerId == idPhotographer)
 	return userGrid
 }
 
 export async function displayPictures(photographersPictures){
-	const photographersGrid = document.querySelector('.picture-card-grid');
-	const idPhotographer = getId();
+	const grid = document.querySelector('.picture-card-grid');
 
 	photographersPictures.forEach((photographersPicture) => {
-		const photographerPictureModel = photographerGrid(photographersPicture, idPhotographer);
-		photographersGrid.appendChild(photographerPictureModel);
+		const photographerPictureTextModel = photographerGrid(photographersPicture);
+		const cardMedia = grid.appendChild(photographerPictureTextModel);
+	const app = new App()
+	//const Media = app.main(photographersPicture)
+	//console.log(Media)
+		app.main(photographersPicture, cardMedia)
+	//cardMedia.appendChild(app.main(photographersPicture)) 
+
 	})
 }
 
@@ -603,7 +603,7 @@ export async function display() {
 	const userGrid = await filterPictures(photographersPictures);
 	displayPictures(userGrid);
 	sortPictures(userGrid);
-	listenToDisplayLightbox(userGrid);
+	listenToDisplayLightbox();
 }
 
 /***** Medias likes *****/

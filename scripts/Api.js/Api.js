@@ -12,7 +12,7 @@ class Api {
     }
 }
 
-export class PictureApi extends Api {
+class PictureApi extends Api {
     constructor(url){
         super(url)
     }

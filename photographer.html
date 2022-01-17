@@ -41,19 +41,19 @@
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
 				<form>
-					<div>
+					<div id='firstname'>
 						<label>Prénom</label>
 						<input />
 					</div>
-          <div>
+          <div id='lastname'>
 						<label>Nom</label>
 						<input />
 					</div>
-					<div>
+					<div id='mail' class="formData" data-error="">
 						<label>Email</label>
 						<input />
 					</div>
-					<div>
+					<div id='message'>
 						<label>Votre message</label>
 						<textarea></textarea>
 					</div>
@@ -70,7 +70,12 @@
       </div>
     </div>
     <script src="scripts/pages/photographer.js" type="module"></script>
-    <script src="scripts/Api.js/Api.js" type="module"></script>
+    <script src="scripts/factories/picture.js"></script>
+    <script src="scripts/Api.js/Api.js"></script>
+    <script src="scripts/template/pictureCard.js"></script>
+    <script src="scripts/App.js"></script>
+    <script src="scripts/models/image.js"></script>
+    <script src="scripts/models/video.js"></script>
     <script src="scripts/utils/contactForm.js"></script>
     <script src="scripts/pages/photographer_page/lightbox.js" type="module"></script>
 
