@@ -445,7 +445,7 @@ async function getPhotographersPicturesData() {
 		{
 			"id": 952343423,
 			"photographerId": 930,
-			"title": "Tricks in te air",
+			"title": "Tricks in the air",
 			"video": "Sport_Tricks_in_the_air.mp4",
 			"likes": 150,
 			"date": "2018-02-30",
@@ -585,12 +585,10 @@ export async function displayPictures(photographersPictures){
 	photographersPictures.forEach((photographersPicture) => {
 		const photographerPictureTextModel = photographerGrid(photographersPicture);
 		const cardMedia = grid.appendChild(photographerPictureTextModel);
-	const app = new App()
-	//const Media = app.main(photographersPicture)
-	//console.log(Media)
-		app.main(photographersPicture, cardMedia)
-	//cardMedia.appendChild(app.main(photographersPicture)) 
-
+		
+		const media = new Media(photographersPicture)
+		const template = media.createMedia(photographersPicture)
+		cardMedia.insertBefore(template, cardMedia.firstChild)
 	})
 }
 
@@ -601,13 +599,13 @@ export async function display() {
 
 	displayHeaderData(photographersDatas);
 	const userGrid = await filterPictures(photographersPictures);
+	console.log(userGrid)
 	displayPictures(userGrid);
-	sortPictures(userGrid);
-	listenToDisplayLightbox();
+	listenToDisplayLightbox(userGrid);
 }
 
 /***** Medias likes *****/
-export function computeLikes(){
+export async function computeLikes(){
 	const likePictures = document.querySelectorAll('.likes');
 
 	likePictures.forEach(likePicture => likePicture.addEventListener('click', function (){
@@ -617,12 +615,15 @@ export function computeLikes(){
 		likeNumber.textContent = newLikeNum;
 
 		const newSum = displaySumLikes()+1;
-
+		const userPics = document.querySelector('.picture-card-grid')
+console.log(userPics)
 		return newLikeNum, newSum
-		})		
+		})
 	);
+
 }
-export function displaySumLikes(){
+
+export async function displaySumLikes(){
 	const likeMediasDOM = document.querySelector('.likes-total');		
 	const likes = [...document.querySelectorAll('.like-picture')];
 	const likePicturesNumber = likes.map(like => Number(like.textContent))

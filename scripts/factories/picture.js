@@ -1,19 +1,19 @@
-class media {
+class Media {
     constructor (data){
+        
         if(data.image){
-            const Media = new picture(data);
-            const template = new MediaCard(Media)
-            const templateImage = template.createMediaImage(Media)
-            return templateImage
+            const media = new Picture(data);
+            const template = new PictureCard(media)
+            
+            return template
         }
         if(data.video){
-            const Media = new video(data);
-            const template = new MediaCard(Media)
-            const templateVideo = template.createMediaVideo(Media)
-            return templateVideo
+            const media = new Video(data);
+            const template = new VideoCard(media)
+            return template
         }
         else{
-            return 'media format unknown';
+            throw 'media format unknown';
         }
     }
 }

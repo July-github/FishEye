@@ -69,6 +69,7 @@
     width: 200px;
     object-fit: cover;
     border-radius: 50%;
+    filter: drop-shadow(0 2mm 2mm rgb(192, 192, 192))
 }
 
 /***** Modal *****/

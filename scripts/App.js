@@ -8,8 +8,8 @@ class App{
         //const pictureDatas = await this.pictureApi.getPictures()
         //console.log(pictureDatas)
         
-            const Media = new media(data)
-            return cardMedia.insertBefore(Media, cardMedia.firstChild)
+            const media = new Media(data)
+            return cardMedia.insertBefore(media, cardMedia.firstChild)
 
             //return Media
 

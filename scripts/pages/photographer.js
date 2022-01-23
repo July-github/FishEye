@@ -6,7 +6,8 @@ displayDropbtn();
 
 
 /***** Medias likes *****/
-import {displaySumLikes, computeLikes, display} from './photographer_page/photographer_grid.js'
+import {computeLikes, display} from './photographer_page/photographer_grid.js'
+import {sortPictures} from './photographer_page/photographer_sort.js';
 
 export function getId(){
     const queryString = window.location.search;
@@ -19,7 +20,8 @@ export async function displayPicturesInfo(){
 
 	await display();
     
-	computeLikes()
-	displaySumLikes()
+    computeLikes();
+	sortPictures();
+
 }
 displayPicturesInfo();

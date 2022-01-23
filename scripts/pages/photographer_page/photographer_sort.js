@@ -9,25 +9,41 @@ export async function sortPictures(data){
 	const photographersGrid = document.querySelector('.picture-card-grid');
 
     likesSort.addEventListener('click', function(){
+        const userPics = document.querySelectorAll('.picture_card')
+        console.log(userPics)    
         photographersGrid.innerHTML=''
-        sortByLikes(data)
-        listenToDisplayLightbox(data);
+        sortByLikes(userPics)
+        console.log(userPics)
+        displayPictures (userPics)
+        listenToDisplayLightbox(userPics);
         computeLikes()
-        });
+    });
 
     dateSort.addEventListener('click', function(){
         photographersGrid.innerHTML=''
         sortByDate(data)
         listenToDisplayLightbox(data);
         computeLikes()
-        });
+    });
 
     titleSort.addEventListener('click', function(){
         photographersGrid.innerHTML=''
         sortByTitle(data)
         listenToDisplayLightbox(data);
         computeLikes()
-        });
+    });
+}
+
+async function sortByLikes(userPics){
+    [...userPics].sort(function compare(a, b) {
+        if (a.likes < b.likes){
+            return 1;
+        }if (a.likes > b.likes ){
+            return -1;
+        }return 0;
+    });
+    
+    return userPics
 }
 
 function sortByDate(data){
@@ -41,18 +57,6 @@ function sortByDate(data){
         return 0;
     });
     
-    return displayPictures (data)
-}
-
-function sortByLikes(data){
-    data.sort(function compare(a, b) {
-        if (a.likes < b.likes){
-            return 1;
-        }if (a.likes > b.likes ){
-            return -1;
-        }return 0;
-    });
-
     return displayPictures (data)
 }
 
