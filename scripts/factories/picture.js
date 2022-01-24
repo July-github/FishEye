@@ -1,4 +1,8 @@
-class Media {
+import {Picture} from'../models/image.js';
+import {Video} from'../models/video.js';
+import {PictureCard, VideoCard} from '../template/pictureCard.js';
+
+export class Media {
     constructor (data){
         
         if(data.image){

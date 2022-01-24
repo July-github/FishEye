@@ -3,6 +3,7 @@ import { getId } from '../photographer.js';
 import {getPhotographersData, displayHeaderData} from './photographer_header.js';
 import {sortPictures} from './photographer_sort.js';
 import {listenToDisplayLightbox} from './lightbox.js';
+import {Media} from '../factories/picture.js';
 
 async function getPhotographersPicturesData() {
 
@@ -561,6 +562,7 @@ function photographerGrid(data){
 	likesNumber.setAttribute('class', 'like-picture');
 	const likesHeart = document.createElement('i');
 	likesHeart.setAttribute('class', 'fas fa-heart');
+	likesHeart.setAttribute('aria-label', 'likes');
 	const text = document.createElement('h3');
 	text.textContent = title;
 	cardText.appendChild(text);
@@ -575,52 +577,77 @@ function photographerGrid(data){
 
 async function filterPictures(datas){
 	const idPhotographer = getId();
-	const userGrid = datas.filter(data => data.photographerId == idPhotographer)
-	return userGrid
+	const userPics = datas.filter(data => data.photographerId == idPhotographer)
+	return userPics
 }
 
-export async function displayPictures(photographersPictures){
+export async function displayPictures(data){
 	const grid = document.querySelector('.picture-card-grid');
 
-	photographersPictures.forEach((photographersPicture) => {
-		const photographerPictureTextModel = photographerGrid(photographersPicture);
+	[...data].forEach((el) => {
+		const photographerPictureTextModel = photographerGrid(el);
 		const cardMedia = grid.appendChild(photographerPictureTextModel);
 		
-		const media = new Media(photographersPicture)
-		const template = media.createMedia(photographersPicture)
+		const media = new Media(el)
+		const template = media.createMedia(el)
 		cardMedia.insertBefore(template, cardMedia.firstChild)
 	})
 }
 
+async function getUserMedias(){
+	const { photographersPictures } = await getPhotographersPicturesData();
+	const userPicsFiltered = await filterPictures(photographersPictures);
+
+	return userPicsFiltered
+}
+/*** user pictures grid ***/
+const userGrids = await getUserMedias();
+console.log(userGrids)
+
 export async function display() {
     // Récupère les datas des photographes
     const { photographersDatas } = await getPhotographersData();
-	const { photographersPictures } = await getPhotographersPicturesData();
 
 	displayHeaderData(photographersDatas);
-	const userGrid = await filterPictures(photographersPictures);
-	console.log(userGrid)
-	displayPictures(userGrid);
-	listenToDisplayLightbox(userGrid);
+	displayPictures(userGrids);
+	displaySumLikes();
+	computeLikes(userGrids);
+	listenToDisplayLightbox(userGrids);
+	sortPictures(userGrids);
 }
 
 /***** Medias likes *****/
-export async function computeLikes(){
-	const likePictures = document.querySelectorAll('.likes');
+
+function pushLikeToGrid(data, likePicture, newLikeNum){
+	data.forEach((el) => {
+		if(el.id == likePicture.id){
+			el.likes = newLikeNum;
+		}
+		return data
+	})
+}
+
+export async function computeLikes(data){
+	const likePictures = document.querySelectorAll('.picture_card');
+console.log(likePictures)
 
 	likePictures.forEach(likePicture => likePicture.addEventListener('click', function (){
+		console.log(likePicture.id)
 		const likeNumber = likePicture.querySelector('.like-picture');
 		const likeNum = Number(likeNumber.textContent);		
 		const newLikeNum = likeNum+1;
 		likeNumber.textContent = newLikeNum;
 
+		//push to userGrids
+		pushLikeToGrid(data, likePicture, newLikeNum)
+		console.log(userGrids)
+
 		const newSum = displaySumLikes()+1;
-		const userPics = document.querySelector('.picture-card-grid')
-console.log(userPics)
+
 		return newLikeNum, newSum
 		})
 	);
-
+	
 }
 
 export async function displaySumLikes(){
@@ -628,9 +655,10 @@ export async function displaySumLikes(){
 	const likes = [...document.querySelectorAll('.like-picture')];
 	const likePicturesNumber = likes.map(like => Number(like.textContent))
 	const sum = [...likePicturesNumber].reduce(function(a, b){
-		return a+b;
-	}, 0)
-	likeMediasDOM.innerHTML = sum + ' <i class="fas fa-heart"></i>';
+			return a+b;
+		}, 0)
+
+	likeMediasDOM.innerHTML = sum + ' <i class="fas fa-heart" aria-label="sum of likes"></i>';
 
 	return sum
 }

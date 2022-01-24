@@ -21,7 +21,7 @@
     border-radius: 5px;
     cursor: pointer;
 
-    &:hover{
+    &:hover, &:focus{
         background-color: #DB8876;
         color: black;
     }
@@ -33,7 +33,7 @@
     justify-content: center;
 }
 
-.photograph-header h2 {
+.photograph-header h1 {
     color: #D3573C;
     font-size: 64px;
     font-weight: 400;
@@ -41,7 +41,7 @@
     line-height: 83px;
 }
 
-.photograph-header h3 {
+.photograph-header h2 {
     color: #901C1C;
     font-size: 24px;
     font-weight: 400;
@@ -108,7 +108,7 @@
     cursor: pointer;
 }
 
-.modal header h2 {
+legend {
     font-size: 60px;
     font-weight: normal;
     text-align: center;
@@ -174,7 +174,7 @@ form textarea{
     margin-top: -20px;
     cursor: pointer;
 
-    &:hover{
+    &:hover, &:focus{
         background-color: #DB8876;
         color: black;    
     }

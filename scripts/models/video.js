@@ -1,4 +1,4 @@
-class Video{
+export class Video{
     constructor(data){
         this._video = data.video;
         this._photographerId = data.photographerId

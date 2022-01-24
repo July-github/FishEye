@@ -71,13 +71,13 @@ function photographerHeader(data) {
         const head = document.createElement( 'div' );
 		head.setAttribute('class', 'photo_header');
         head.setAttribute('id', id);
-        const h2 = document.createElement( 'h2' );
-        const place = document.createElement( 'h3' );
+        const h1 = document.createElement( 'h1' );
+        const place = document.createElement( 'h2' );
         const tag = document.createElement( 'span' );
         place.textContent = city + ', ' + country;
         tag.textContent = tagline;
-        h2.textContent = name;
-        head.appendChild(h2);
+        h1.textContent = name;
+        head.appendChild(h1);
         head.appendChild(place);
         head.appendChild(tag);
         return head
@@ -87,6 +87,7 @@ function photographerHeader(data) {
 		const headImg = document.createElement( 'div' );
 		const img = document.createElement( 'img' );
 		img.setAttribute('src', image)
+        img.setAttribute('alt', name)
 		headImg.setAttribute('class', 'image_header')
 		headImg.appendChild(img);
 		return headImg

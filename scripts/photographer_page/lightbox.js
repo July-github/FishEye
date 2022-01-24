@@ -1,5 +1,6 @@
 //Display lightbox
 /***** Display lightbox *****/
+import {Media} from '../factories/picture.js';
 
 function photographerGallery(data){
     const title = data.title;

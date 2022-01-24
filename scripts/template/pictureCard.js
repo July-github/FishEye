@@ -1,4 +1,4 @@
-class PictureCard {
+export class PictureCard {
     constructor(data){
         this._image = data.image
         this._photographerId = data.photographerId
@@ -10,13 +10,13 @@ class PictureCard {
         const pictureCard = document.createElement('img')
         pictureCard.setAttribute('class', 'Media')
         pictureCard.setAttribute('src', `Sample Photos/${this._photographerId}/${this._image}`)
-        pictureCard.setAttribute('alt', `${this._title}`)
+        pictureCard.setAttribute('alt', `${this._title}` + ', closeup view')
 
         return pictureCard
     }
 }
 
-class VideoCard {
+export class VideoCard {
     constructor(data){
         this._video = data.video
         this._photographerId = data.photographerId
@@ -29,7 +29,7 @@ class VideoCard {
         videoCard.setAttribute('class', 'Media')
         videoCard.setAttribute ('src', `Sample Photos/${this._photographerId}/${this._video}`)
         videoCard.setAttribute ('type', 'video/mp4')
-        videoCard.setAttribute ('alt', `${this._title}`)
+        videoCard.setAttribute ('alt', `${this._title}` + ', closeup view')
         videoCard.setAttribute ('controls', 'controls')
         videoCard.setAttribute ('autoplay', 'autoplay')
         videoCard.setAttribute ('muted', 'muted')

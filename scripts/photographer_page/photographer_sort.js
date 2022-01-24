@@ -9,33 +9,30 @@ export async function sortPictures(data){
 	const photographersGrid = document.querySelector('.picture-card-grid');
 
     likesSort.addEventListener('click', function(){
-        const userPics = document.querySelectorAll('.picture_card')
-        console.log(userPics)    
         photographersGrid.innerHTML=''
-        sortByLikes(userPics)
-        console.log(userPics)
-        displayPictures (userPics)
-        listenToDisplayLightbox(userPics);
-        computeLikes()
+        sortByLikes(data)
+        console.log(data)
+        listenToDisplayLightbox(data);
+        computeLikes(data)
     });
 
     dateSort.addEventListener('click', function(){
         photographersGrid.innerHTML=''
         sortByDate(data)
         listenToDisplayLightbox(data);
-        computeLikes()
+        computeLikes(data)
     });
 
     titleSort.addEventListener('click', function(){
         photographersGrid.innerHTML=''
         sortByTitle(data)
         listenToDisplayLightbox(data);
-        computeLikes()
+        computeLikes(data)
     });
 }
 
-async function sortByLikes(userPics){
-    [...userPics].sort(function compare(a, b) {
+async function sortByLikes(data){
+    data.sort(function compare(a, b) {
         if (a.likes < b.likes){
             return 1;
         }if (a.likes > b.likes ){
@@ -43,7 +40,7 @@ async function sortByLikes(userPics){
         }return 0;
     });
     
-    return userPics
+    return displayPictures (data)
 }
 
 function sortByDate(data){
