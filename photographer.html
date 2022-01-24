@@ -9,31 +9,33 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
+    <header role="banner">
       <a href='./index.html'>
       <img src="assets/images/logo.png" alt="FishEye Home page" class="logo" />
       </a>
     </header>
-    <main id="main">
-      <div class="photograph-header">
+    <main role="main" id="main">
+      <section role="region" class="photograph-header">
         <button class="contact_button" aria-label="Contact Me" id="display_modal_mark">Contactez-moi</button>
-      </div>
-      <div id="pictures-sort">
-        <div id="label">Trier par</div>
-        <div class="dropdown">
-          <div class="dropdown-content">
-            <div>
-              <p id="Likes" aria-label="tri selon les likes">Popularité</p><i id="arrow" class="fa fa-angle-down" aria-hidden="true"></i></div>
-              <p class="p-line dropbtn" id="Date" aria-label="tri selon la date">Date</p>
-              <p class="dropbtn" id="Title" aria-label="tri selon le titre">Titre</p>
-          </div>
+      </section>
+      <section role="region" id="grid" aria-label="affichage des photos et vidéos du photographe">
+        <div id="pictures-sort">
+          <div id="label">Trier par</div>
+            <button role="listbox" class="dropdown-content">
+              <div id="sort_options">
+                <div role="option" id="Likes">Popularité</div><i id="arrow" class="fa fa-angle-down" aria-hidden="true"></i>
+                <div role="option" class="p-line dropbtn" id="Date">Date</div>
+                <div role="option" class="dropbtn" id="Title">Titre</div>
+                
+              </div>
+            </button>
         </div>
-      </div>
-      <div class="picture-card-grid"></div>
-      <div class="medias-likes">
-        <div class="likes-total"></div>
-        <div class="price"></div>
-      </div>
+        <div class="picture-card-grid"></div>
+        <div class="medias-likes">
+          <div class="likes-total"></div>
+          <div class="price"></div>
+        </div>
+      </section>
     </main>
     <div id="contact_modal" role="dialog" aria-describedby="contact_modal">
 			<div class="modal">

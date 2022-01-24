@@ -7,19 +7,22 @@
     padding: 0 50px;
 }
 
-.contact_button {
-    order: 2;
+button {
     font-size: 20px;
     font-weight: bold;
     color: white;
     padding: 11px;
-    margin: auto;
     width: 170px;
     height: 70px;
     border: none;
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.contact_button{
+    order: 2;
+    margin: auto;
 
     &:hover, &:focus{
         background-color: #DB8876;
@@ -70,6 +73,11 @@
     object-fit: cover;
     border-radius: 50%;
     filter: drop-shadow(0 2mm 2mm rgb(192, 192, 192))
+}
+
+#grid{
+    display: flex;
+    flex-direction: column;
 }
 
 /***** Modal *****/
@@ -165,44 +173,59 @@ form textarea{
 
 /***** Dropdown sort *****/
 .dropdown-content{
-    background-color: #901C1C;
-    color: white;
-    font-size: 20px;
-    border-radius: 5px;
-    padding: 5px 0px 5px 20px;
+    background-color: transparent;
+    justify-content: space-between;
+    font-weight: bold;
     width: 170px;
-    margin-top: -20px;
-    cursor: pointer;
+    padding: 0;
+    margin-top: -13px;
+    position: relative;
+}
+#sort_options{
+    width: 170px;
+    background-color: #901C1C;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     &:hover, &:focus{
         background-color: #DB8876;
-        color: black;    
+        color: black;   
     }
+
     > div{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-    }
-    > p{
-        font-weight: 900;
-        vertical-align: middle;
-    }
+        text-align: left;
+        height: 70px;
+        width: 130px;
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;    
+        line-height: 70px;
+    }   
 
     > .p-line{
         border-bottom: white solid 1px;
         border-top: white solid 1px;
-        padding-top: 20px;
-        padding-bottom: 20px;
-        margin: 0;
+        border-radius: 0;
     }
 }
 .fa-angle-down, .fa-angle-up{
-    padding: 3px 20px 0 20px;
     font-size: 20px;
+    color: white;
+    margin: 15px;
+    position: absolute;
+    right: 10px;
+    top: 8px;
+}
+#arrow{
+    display: inline;
 }
 #pictures-sort{
     display: flex;
+    justify-content: flex-start;
     margin: 30px 0px 30px 100px;
 }
 #label{
