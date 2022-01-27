@@ -20,8 +20,10 @@ async function displayLightbox(data){
     const cardMedia = photographerGallery(data)
     const media = new Media(data)
     const template = cardMedia.appendChild(media.createMedia())
-    pictureGallery.insertBefore(template, pictureGallery.firstChild)
+    const logo = document.querySelector('.logo')
 
+    pictureGallery.insertBefore(template, pictureGallery.firstChild)
+    logo.style.display = 'none'
 }
 
 function resetLightbox(){
@@ -33,8 +35,8 @@ export async function listenToDisplayLightbox(data) {
 
     const cards = [...document.querySelectorAll('.Media')];
     const lightbox = document.getElementById('lightbox');
-    const goNext = document.querySelector('.fa-angle-right');
-    const goPrevious = document.querySelector('.fa-angle-left');
+    const goNext = document.querySelector('#next');
+    const goPrevious = document.querySelector('#previous');
     const backMain = document.querySelector('main');
     
     for(let n=0; n<cards.length; n++){
@@ -73,16 +75,19 @@ export async function listenToDisplayLightbox(data) {
 /***** Close lightbox *****/
 function closeLightbox() {
     const lightbox = document.getElementById("lightbox");
+    const backMain = document.querySelector('main');
+    const logo = document.querySelector('.logo')
+
     lightbox.style.display = "none";
+    backMain.style.display = "block";
+    logo.style.display = 'block';
 }
 
 function listenToCloseLightbox(){
-    const cross = [...document.querySelectorAll("i.fas.fa-times")];
-    const backMain = document.querySelector('main');
+    const cross = document.querySelector("#close_lightbox");
 
-    cross.map(cros => cros.addEventListener('click', function(){
+    cross.addEventListener('click', function(){
         resetLightbox();
         closeLightbox();
-        backMain.style.display = "block";
-    }))  
+    })
 }

@@ -20,13 +20,15 @@ h1 {
     font-size: 36px;
 }
 
-.logo {
+.logo > img {
     height: 50px;
     margin-left: 100px;
 }
-a{
+
+a {
     text-decoration: none;
 }
+
 .photographer_section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -53,7 +55,8 @@ a{
     font-size: 36px;
     font-weight: normal;
     margin: 0;
-    line-height: 47px;
+    line-height: 55px;
+    text-align: center;
 }
 
 .photographer_section article img {
@@ -67,24 +70,24 @@ a{
 
 .photographer_section article h3 {
     color: #901C1C;
-    font-size: 13px;
+    font-size: 20px;
     font-weight: normal;
-    line-height: 17px;
+    line-height: 22px;
     margin: 0;
 }
 
 .photographer_section article span{
     color: #000000;
-    font-size: 10px;
+    font-size: 15px;
     font-weight: normal;
     margin: 5px;
-    line-height: 13px;
+    line-height: 18px;
 }
 
 .photographer_section article p {
     color: #757575;
-    font-size: 9px;
+    font-size: 13px;
     font-weight: normal;
     margin: 0;
-    line-height: 12px;
+    line-height: 16px;
 }

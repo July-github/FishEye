@@ -556,8 +556,10 @@ function photographerGrid(data){
 
 	const cardText = document.createElement('div');
 	cardText.setAttribute('class', 'picture_text');
-	const cardLikes = document.createElement('div');
+	const cardLikes = document.createElement('a');
 	cardLikes.setAttribute('class', 'likes');
+	cardLikes.setAttribute('aria-label', 'likes');
+	cardLikes.setAttribute('href', '#');
 	const likesNumber = document.createElement('span');
 	likesNumber.setAttribute('class', 'like-picture');
 	const likesHeart = document.createElement('i');
@@ -600,14 +602,14 @@ async function getUserMedias(){
 
 	return userPicsFiltered
 }
+
 /*** user pictures grid ***/
-const userGrids = await getUserMedias();
-console.log(userGrids)
 
 export async function display() {
     // Récupère les datas des photographes
     const { photographersDatas } = await getPhotographersData();
-
+	const userGrids = await getUserMedias();
+	
 	displayHeaderData(photographersDatas);
 	displayPictures(userGrids);
 	displaySumLikes();
@@ -629,7 +631,6 @@ function pushLikeToGrid(data, likePicture, newLikeNum){
 
 export async function computeLikes(data){
 	const likePictures = document.querySelectorAll('.picture_card');
-console.log(likePictures)
 
 	likePictures.forEach(likePicture => likePicture.addEventListener('click', function (){
 		console.log(likePicture.id)
@@ -640,7 +641,6 @@ console.log(likePictures)
 
 		//push to userGrids
 		pushLikeToGrid(data, likePicture, newLikeNum)
-		console.log(userGrids)
 
 		const newSum = displaySumLikes()+1;
 

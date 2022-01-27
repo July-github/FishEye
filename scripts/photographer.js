@@ -1,13 +1,14 @@
 // Display photographer page
-/***** Display dropdown *****/
 import {displayDropbtn} from './utils/dropdown.js';
+import {display} from './photographer_page/photographer_grid.js'
+import {sendConsole, listenToMail, listenToCloseModal, listenToDisplayModal} from './utils/contactForm.js';
+
+/***** Display dropdown *****/
 
 displayDropbtn();
 
 
-/***** Medias likes *****/
-import {display} from './photographer_page/photographer_grid.js'
-import {sortPictures} from './photographer_page/photographer_sort.js';
+/***** Display grid *****/
 
 export function getId(){
     const queryString = window.location.search;
@@ -16,19 +17,9 @@ export function getId(){
     return id
 }
 display();
-/*export async function displayPicturesInfo(){
 
-	await display();
-    
-    //computeLikes();
-    //displaySumLikes();
-	//sortPictures();
-
-}
-displayPicturesInfo();*/
 
 /***** Modal *****/
-import {sendConsole, listenToMail, listenToCloseModal, listenToDisplayModal} from './utils/contactForm.js';
 
 listenToMail();
 sendConsole();

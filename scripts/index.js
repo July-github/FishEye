@@ -13,7 +13,7 @@ function photographerFactory(data) {
         link.setAttribute('href', `./photographer.html?id=${id}`)
         const img = document.createElement( 'img' );
         img.setAttribute('src', picture)
-        img.setAttribute('alt', 'photo du photographe ' + name)
+        img.setAttribute('alt', 'photo du photographe')
         const h2 = document.createElement( 'h2' );
         const place = document.createElement( 'h3' );
         const tag = document.createElement( 'span' );

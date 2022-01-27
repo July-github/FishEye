@@ -18,6 +18,11 @@ button {
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
+
+    &:hover, &:focus{
+        background-color: #DB8876;
+        color: black;   
+    }
 }
 
 .contact_button{
@@ -92,12 +97,10 @@ button {
     border-radius: 5px;
     background-color: #DB8876;
     position: absolute;
-    left: 0%;
-    right: 0%;
-    top: 0%;
-    bottom: 0%;
+    left: 0;
+    right: 0;
     width: 669px;
-    height: 800px;
+    height: 850px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -110,6 +113,7 @@ button {
 .modal header {
     justify-content: space-between;
     width: 100%;
+    margin-bottom: 50px;
 }
 
 .modal header img {
@@ -119,7 +123,7 @@ button {
 legend {
     font-size: 60px;
     font-weight: normal;
-    text-align: center;
+    text-align: left;
 }
 
 form {
@@ -176,10 +180,16 @@ form textarea{
     background-color: transparent;
     justify-content: space-between;
     font-weight: bold;
-    width: 170px;
     padding: 0;
     margin-top: -13px;
     position: relative;
+
+    &:hover, &:focus{
+        #sort_options{
+            background-color: #DB8876;
+            color: black;   
+        }
+    }
 }
 #sort_options{
     width: 170px;
@@ -189,12 +199,7 @@ form textarea{
     flex-direction: column;
     align-items: center;
 
-    &:hover, &:focus{
-        background-color: #DB8876;
-        color: black;   
-    }
-
-    > div{
+    > a {
         text-align: left;
         height: 70px;
         width: 130px;
@@ -316,6 +321,7 @@ form textarea{
         color: transparent;
         background-clip: text;
         -webkit-background-clip: text;
+        cursor: pointer;
     }
 
     & h3{
@@ -333,7 +339,7 @@ form textarea{
     height: 90%;
     order : 2;
 
-    > img, video{
+    > a, img, video{
         border-radius: 5px;
         object-fit: cover;
         width: 100%;
@@ -341,7 +347,7 @@ form textarea{
     }
 }
 
-#box_next{
+#box_next {
     display: flex;
     order : 3;
     flex-direction: column;
@@ -349,7 +355,7 @@ form textarea{
     height:50%;
     padding-left: 20px;
 }
-#box_previous{
+#box_previous {
     display: flex;
     order : 1;
     flex-direction: column;

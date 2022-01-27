@@ -1,30 +1,37 @@
+/***** Contact modal *****/
 
 function displayModal() {
     const modal = document.getElementById("contact_modal");
     const main = document.getElementById("main");
-    const lightbox = document.getElementById("lightbox");
-    const close = document.getElementById('close_modal_mark')
+    const close = document.getElementById('close_modal_mark');
+    const legend = document.getElementById('legend_modal'); 
+    const name = document.querySelector('h1').innerText;
+
     modal.style.display = "block";
     main.style.opacity = "0.5";
     close.focus();
     main.setAttribute('aria-hidden', 'true');
-    lightbox.setAttribute('aria-hidden', 'true');
+    main.setAttribute('tabindex', '-1');
+    legend.innerHTML = 'Contactez-moi </br>' + name;
 }
 
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     const main = document.getElementById("main");
     const contact = document.getElementById('display_modal_mark');
-    const lightbox = document.getElementById("lightbox");
+    const legend = document.getElementById('legend_modal'); 
+
     modal.style.display = "none";
     main.style.opacity = "1";
     contact.focus();
     main.setAttribute('aria-hidden', 'false');
-    lightbox.setAttribute('aria-hidden', 'false');
+    main.removeAttribute('tabindex');
+    legend.innerHTML = "";
 }
 
 export function listenToDisplayModal(){
   const display = document.getElementById('display_modal_mark')
+  
   display.addEventListener('click', function(){
     displayModal();
     escapeModal();
@@ -33,6 +40,7 @@ export function listenToDisplayModal(){
 
 export function listenToCloseModal(){
   const close = document.getElementById('close_modal_mark')
+  
   close.addEventListener('click', function(){
     closeModal();
   })
@@ -46,7 +54,7 @@ export function escapeModal(){
   })
 }
 
-//********* validation email ************  
+/***** Email validation *****/  
 //listening to a change from the field email
 
 function validateEmail(mail) {
@@ -63,7 +71,7 @@ function validateEmail(mail) {
     return false;
   }else{
     errorEmail.removeAttribute("data-error");
-    inputEmail.setAttribute('aria-invalid', 'true');
+    inputEmail.removeAttribute('aria-invalid', 'true');
     return true;
   }
 }
@@ -77,7 +85,7 @@ export function listenToMail(){
     });
   }
 
-//Sending infos to console
+/***** Sending infos to console *****/  
 
 function consoleFormInput(){
     const firstname = document.querySelector('#firstname')

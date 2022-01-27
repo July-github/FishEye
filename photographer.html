@@ -8,12 +8,14 @@
     <script src="https://kit.fontawesome.com/dccdede72c.js" crossorigin="anonymous"></script>
     <title>Fisheye - photographe </title>
   </head>
+
   <body>
     <header role="banner">
-      <a href='./index.html'>
-      <img src="assets/images/logo.png" alt="FishEye Home page" class="logo" />
+      <a href='./index.html' class="logo">
+      <img src="assets/images/logo.png" alt="FishEye Home page" />
       </a>
     </header>
+
     <main role="main" id="main">
       <section role="region" class="photograph-header">
         <button class="contact_button" aria-label="Contact Me" id="display_modal_mark">Contactez-moi</button>
@@ -21,14 +23,14 @@
       <section role="region" id="grid" aria-label="affichage des photos et vidéos du photographe">
         <div id="pictures-sort">
           <div id="label">Trier par</div>
-            <button role="listbox" class="dropdown-content">
-              <div id="sort_options">
-                <div role="option" id="Likes">Popularité</div><i id="arrow" class="fa fa-angle-down" aria-hidden="true"></i>
-                <div role="option" class="p-line dropbtn" id="Date">Date</div>
-                <div role="option" class="dropbtn" id="Title">Titre</div>
-                
-              </div>
-            </button>
+          <button class="dropdown-content">
+            <div role="listbox" aria-expanded="false" id="sort_options" aria-haspopup=”listbox”>
+              <a role="option" class="list" id="Likes" href="#">Popularité</a>
+              <a role="option" class="p-line dropbtn list" id="Date" href="#">Date</a>
+              <a role="option" class="dropbtn list" id="Title" href="#">Titre</a>
+              <i id="arrow" class="fa fa-angle-down" aria-hidden="true"></i>
+            </div>
+          </button>
         </div>
         <div class="picture-card-grid"></div>
         <div class="medias-likes">
@@ -37,41 +39,46 @@
         </div>
       </section>
     </main>
-    <div id="contact_modal" role="dialog" aria-describedby="contact_modal">
+
+    <div id="contact_modal" role="dialog" aria-labelledby="modal">
 			<div class="modal">
 				<header>
-          <legend>Contactez-moi</legend>
-          <img src="assets/icons/close.svg" id="close_modal_mark" alt="croix pour fermer"/>
+          <legend id="legend_modal"></legend>
+          <a href="#" id="close_modal_mark"><img src="assets/icons/close.svg" alt="croix pour fermer"/></a>
         </header>
 				<form>
 					<div>
 						<label for="firstname">Prénom</label>
-						<input type="text" name="firstname" id="firstname" aria-labelledby="firstname"/>
+						<input type="text" name="firstname" id="firstname" aria-describedby="firstname"/>
 					</div>
           <div>
 						<label for="lastname">Nom</label>
-						<input type="text" name="lastname" id="lastname" aria-labelledby="lastname"/>
+						<input type="text" name="lastname" id="lastname" aria-describedby="lastname"/>
 					</div>
 					<div id='mail' class="formData" >
 						<label for="email">Email</label>
-						<input type="email" name="email" id="email" aria-labelledby="email"/>
+						<input type="email" name="email" id="email" aria-describedby="email"/>
 					</div>
 					<div>
 						<label for="message">Votre message</label>
-						<textarea name="message" id="message"></textarea>
+						<textarea name="message" id="message" aria-describedby="votre message"></textarea>
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>
+
     <div id="lightbox">
-      <div id="box_previous"><i class="fas fa-angle-left"></i></div>
+      <div id="box_previous">
+        <a href="#" id="previous"><i class="fas fa-angle-left"></i></a>
+      </div>
       <div id="box"></div>
       <div id="box_next">
-        <i class="fas fa-times"></i>
-        <i class="fas fa-angle-right"></i>
+        <a href="#" id="close_lightbox"><i class="fas fa-times"></i></a>
+        <a href="#" id="next"><i class="fas fa-angle-right"></i></a>
       </div>
     </div>
+
     <script src="scripts/photographer.js" type="module"></script>
     <script src="scripts/factories/picture.js" type="module"></script>
     <script src="scripts/Api.js/Api.js" type="module"></script>
