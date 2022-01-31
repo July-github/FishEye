@@ -19,13 +19,15 @@ function photographerGallery(data){
 async function displayLightbox(data){
 
     const pictureGallery = document.querySelector('#lightbox > #box');
-    const cardMedia = photographerGallery(data)
-    const media = new Media(data)
-    const template = cardMedia.appendChild(media.createMedia())
-    const logo = document.querySelector('.logo')
+    const cardMedia = photographerGallery(data);
+    const media = new Media(data);
+    const template = cardMedia.appendChild(media.createMedia());
+    const logo = document.querySelector('.logo');
+    const close = document.querySelector("#close_lightbox");
 
     pictureGallery.insertBefore(template, pictureGallery.firstChild)
     logo.style.display = 'none'
+    close.focus();
 }
 
 function resetLightbox(){
@@ -78,17 +80,19 @@ export async function listenToDisplayLightbox(data) {
 function closeLightbox() {
     const lightbox = document.getElementById("lightbox");
     const backMain = document.querySelector('main');
-    const logo = document.querySelector('.logo')
+    const logo = document.querySelector('.logo');
+    const firstPicture = document.querySelector('.Media');
 
     lightbox.style.display = "none";
     backMain.style.display = "block";
     logo.style.display = 'block';
+    firstPicture.focus();
 }
 
 function listenToCloseLightbox(){
-    const cross = document.querySelector("#close_lightbox");
+    const close = document.querySelector("#close_lightbox");
 
-    cross.addEventListener('click', function(){
+    close.addEventListener('click', function(){
         resetLightbox();
         closeLightbox();
     })

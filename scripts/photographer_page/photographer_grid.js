@@ -615,7 +615,6 @@ export async function computeLikes(data){
 	const likePictures = document.querySelectorAll('.picture_card');
 
 	likePictures.forEach(likePicture => likePicture.addEventListener('click', function (){
-		console.log(likePicture.id)
 		const likeNumber = likePicture.querySelector('.like-picture');
 		const likeNum = Number(likeNumber.textContent);		
 		const newLikeNum = likeNum+1;
