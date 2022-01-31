@@ -1,4 +1,3 @@
-Projet FishEye - site de photographes indépendants
+Projet FishEye 
 
-Site accessible
-
+Site accessible de photographes indépendants
