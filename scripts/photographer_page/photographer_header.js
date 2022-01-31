@@ -73,7 +73,7 @@ function photographerHeader(data) {
         head.setAttribute('id', id);
         const h1 = document.createElement( 'h1' );
         const place = document.createElement( 'h2' );
-        const tag = document.createElement( 'span' );
+        const tag = document.createElement( 'p' );
         place.textContent = city + ', ' + country;
         tag.textContent = tagline;
         h1.textContent = name;

@@ -1,7 +1,9 @@
 //Display lightbox
+
 /***** Display lightbox *****/
 import {Media} from '../factories/picture.js';
 
+// Template creation
 function photographerGallery(data){
     const title = data.title;
 

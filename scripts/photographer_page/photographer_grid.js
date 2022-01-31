@@ -1,8 +1,5 @@
 /***** Display pictures *****/
 import { getId } from '../photographer.js';
-import {getPhotographersData, displayHeaderData} from './photographer_header.js';
-import {sortPictures} from './photographer_sort.js';
-import {listenToDisplayLightbox} from './lightbox.js';
 import {Media} from '../factories/picture.js';
 
 async function getPhotographersPicturesData() {
@@ -283,7 +280,7 @@ async function getPhotographersPicturesData() {
 		{
 			"id": 2525345343,
 			"photographerId": 243,
-			"title": "Wednesday Potrait",
+			"title": "Wednesday Portrait",
 			"image": "Portrait_Wednesday.jpg",
 			"likes": 34,
 			"date": "2019-04-07",
@@ -560,7 +557,7 @@ function photographerGrid(data){
 	cardLikes.setAttribute('class', 'likes');
 	cardLikes.setAttribute('aria-label', 'likes');
 	cardLikes.setAttribute('href', '#');
-	const likesNumber = document.createElement('span');
+	const likesNumber = document.createElement('p');
 	likesNumber.setAttribute('class', 'like-picture');
 	const likesHeart = document.createElement('i');
 	likesHeart.setAttribute('class', 'fas fa-heart');
@@ -583,6 +580,13 @@ async function filterPictures(datas){
 	return userPics
 }
 
+export async function getUserMedias(){
+	const { photographersPictures } = await getPhotographersPicturesData();
+	const userPicsFiltered = await filterPictures(photographersPictures);
+
+	return userPicsFiltered
+}
+
 export async function displayPictures(data){
 	const grid = document.querySelector('.picture-card-grid');
 
@@ -594,28 +598,6 @@ export async function displayPictures(data){
 		const template = media.createMedia(el)
 		cardMedia.insertBefore(template, cardMedia.firstChild)
 	})
-}
-
-async function getUserMedias(){
-	const { photographersPictures } = await getPhotographersPicturesData();
-	const userPicsFiltered = await filterPictures(photographersPictures);
-
-	return userPicsFiltered
-}
-
-/*** user pictures grid ***/
-
-export async function display() {
-    // Récupère les datas des photographes
-    const { photographersDatas } = await getPhotographersData();
-	const userGrids = await getUserMedias();
-	
-	displayHeaderData(photographersDatas);
-	displayPictures(userGrids);
-	displaySumLikes();
-	computeLikes(userGrids);
-	listenToDisplayLightbox(userGrids);
-	sortPictures(userGrids);
 }
 
 /***** Medias likes *****/

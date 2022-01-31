@@ -12,7 +12,7 @@ export class PictureCard {
         pictureCard.setAttribute('class', 'Media')
         const pictureImg = document.createElement('img')
         pictureImg.setAttribute('src', `Sample Photos/${this._photographerId}/${this._image}`)
-        pictureImg.setAttribute('alt', `${this._title}` + ', closeup view')
+        pictureImg.setAttribute('alt', `${this._title}` + ', close-up view')
         pictureCard.appendChild(pictureImg)
 
         return pictureCard

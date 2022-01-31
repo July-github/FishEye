@@ -43,6 +43,7 @@ function closeDropbtnOnBlur(){
 	listBox.setAttribute('aria-expanded', 'false');
 }
 
+
 export function listenToDropdown(){
 
 	const buttonList = document.querySelector('#pictures-sort')

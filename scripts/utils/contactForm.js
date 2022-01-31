@@ -1,5 +1,35 @@
-/***** Contact modal *****/
+// Contact modal
 
+/***** Email validation *****/  
+function validateEmail(mail) {
+  const inputEmail = document.getElementById('email');
+  const errorEmail = document.querySelector('#mail');
+  //regex creation
+  const regexEmail = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/g;
+  //regex test on the field email
+  const validEmail = regexEmail.test(mail.value);
+
+  if(validEmail === false) {
+    errorEmail.setAttribute('data-error', "L'adresse électronique est invalide");
+    inputEmail.setAttribute('aria-invalid', 'true');
+    return false;
+  }else{
+    errorEmail.removeAttribute("data-error");
+    inputEmail.removeAttribute('aria-invalid', 'true');
+    return true;
+  }
+}
+
+export function listenToMail(){
+  //getting field email
+  const mail = document.querySelector('#email');
+  
+  mail.addEventListener("input", function() {
+      validateEmail(this);
+    });
+}
+
+/***** Display contact modal *****/  
 function displayModal() {
     const modal = document.getElementById("contact_modal");
     const main = document.getElementById("main");
@@ -54,39 +84,7 @@ export function escapeModal(){
   })
 }
 
-/***** Email validation *****/  
-//listening to a change from the field email
-
-function validateEmail(mail) {
-  const inputEmail = document.getElementById('email');
-  const errorEmail = document.querySelector('#mail');
-  //regex creation
-  const regexEmail = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/g;
-  //regex test on the field email
-  const validEmail = regexEmail.test(mail.value);
-
-  if(validEmail === false) {
-    errorEmail.setAttribute('data-error', "L'adresse électronique est invalide");
-    inputEmail.setAttribute('aria-invalid', 'true');
-    return false;
-  }else{
-    errorEmail.removeAttribute("data-error");
-    inputEmail.removeAttribute('aria-invalid', 'true');
-    return true;
-  }
-}
-
-export function listenToMail(){
-  //getting field email
-  const mail = document.querySelector('#email');
-  
-  mail.addEventListener("input", function() {
-      validateEmail(this);
-    });
-  }
-
 /***** Sending infos to console *****/  
-
 function consoleFormInput(){
     const firstname = document.querySelector('#firstname')
     const lastname = document.querySelector('#lastname')

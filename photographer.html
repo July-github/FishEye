@@ -40,42 +40,42 @@
       </section>
     </main>
 
-    <div id="contact_modal" role="dialog" aria-labelledby="modal">
+    <div id="contact_modal" role="dialog" aria-labelledby="legend_modal" aria-describedby="Contact me">
 			<div class="modal">
 				<header>
-          <legend id="legend_modal"></legend>
-          <a href="#" id="close_modal_mark"><img src="assets/icons/close.svg" alt="croix pour fermer"/></a>
+          <h1 id="legend_modal"></h1>
+          <a href="#" id="close_modal_mark"><img src="assets/icons/close.svg" alt="Close contact form"/></a>
         </header>
 				<form>
 					<div>
 						<label for="firstname">Prénom</label>
-						<input type="text" name="firstname" id="firstname" aria-describedby="firstname"/>
+						<input type="text" name="firstname" id="firstname" aria-labelledby="firstname"/>
 					</div>
           <div>
 						<label for="lastname">Nom</label>
-						<input type="text" name="lastname" id="lastname" aria-describedby="lastname"/>
+						<input type="text" name="lastname" id="lastname" aria-labelledby="lastname"/>
 					</div>
 					<div id='mail' class="formData" >
 						<label for="email">Email</label>
-						<input type="email" name="email" id="email" aria-describedby="email"/>
+						<input type="email" name="email" id="email" aria-labelledby="email"/>
 					</div>
 					<div>
 						<label for="message">Votre message</label>
-						<textarea name="message" id="message" aria-describedby="votre message"></textarea>
+						<textarea name="message" id="message" aria-labelledby="message"></textarea>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" aria-labelledby="Send">Envoyer</button>
 				</form>
 			</div>
 		</div>
 
-    <div id="lightbox">
+    <div role="dialog" id="lightbox" aria-label="image close-up view">
       <div id="box_previous">
-        <a href="#" id="previous"><i class="fas fa-angle-left"></i></a>
+        <a href="#" id="previous" aria-label="previous image"><i class="fas fa-angle-left" ></i></a>
       </div>
       <div id="box"></div>
       <div id="box_next">
-        <a href="#" id="close_lightbox"><i class="fas fa-times"></i></a>
-        <a href="#" id="next"><i class="fas fa-angle-right"></i></a>
+        <a href="#" id="close_lightbox"  aria-label="close dialog"><i class="fas fa-times"></i></a>
+        <a href="#" role="button" id="next" aria-label="next image"><i class="fas fa-angle-right"></i></a>
       </div>
     </div>
 
