@@ -556,6 +556,7 @@ function photographerGrid(data){
 	const cardLikes = document.createElement('a');
 	cardLikes.setAttribute('class', 'likes');
 	cardLikes.setAttribute('aria-label', 'likes');
+	cardLikes.setAttribute('aria-described', 'Click to add 1 like');
 	cardLikes.setAttribute('href', '#');
 	const likesNumber = document.createElement('p');
 	likesNumber.setAttribute('class', 'like-picture');
