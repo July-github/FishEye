@@ -17,13 +17,13 @@
     </header>
 
     <main role="main" id="main">
-      <section role="region" class="photograph-header">
-        <button class="contact_button" aria-label="Contact Me" id="display_modal_mark">Contactez-moi</button>
+      <section role="region" class="photograph-header" aria-label="Photograph informations">
+        <button class="contact_button" aria-label="Contact me" id="display_modal_mark">Contactez-moi</button>
       </section>
-      <section role="region" id="grid" aria-label="affichage des photos et vidéos du photographe">
+      <section role="region" id="grid" aria-label="Photograph pictures and movies">
         <div id="pictures-sort">
           <div id="label">Trier par</div>
-          <button id="dropdown-content" aria-label="Order by" aria-labelledby="dropdown-content">
+          <button id="dropdown-content" aria-label="Order by">
             <div role="listbox" aria-expanded="false" id="sort_options" aria-haspopup=”listbox”>
               <a role="option" class="list" id="Likes" href="#">Popularité</a>
               <a role="option" class="p-line dropbtn list" id="Date" href="#">Date</a>
@@ -40,30 +40,30 @@
       </section>
     </main>
 
-    <div id="contact_modal" role="dialog" aria-labelledby="legend_modal" aria-describedby="Contact me">
+    <div id="contact_modal" role="dialog" >
 			<div class="modal">
-				<header>
+				<header aria-labelledby="legend_modal">
           <h1 id="legend_modal"></h1>
           <a href="#" id="close_modal_mark"><img src="assets/icons/close.svg" alt="Close contact form"/></a>
         </header>
 				<form>
 					<div>
-						<label for="firstname">Prénom</label>
-						<input type="text" name="firstname" id="firstname" aria-labelledby="firstname"/>
+						<label for="firstname" id="firstname">Prénom</label>
+						<input type="text" name="firstname" id="firstname_input" aria-labelledby="firstname"/>
 					</div>
           <div>
-						<label for="lastname">Nom</label>
-						<input type="text" name="lastname" id="lastname" aria-labelledby="lastname"/>
+						<label for="lastname" id="lastname">Nom</label>
+						<input type="text" name="lastname" id="lastname_input" aria-labelledby="lastname"/>
 					</div>
 					<div id='mail' class="formData" >
-						<label for="email">Email</label>
-						<input type="email" name="email" id="email" aria-labelledby="email"/>
+						<label for="email" id="email">Email</label>
+						<input type="email" name="email" id="email_input" aria-labelledby="email"/>
 					</div>
 					<div>
-						<label for="message">Votre message</label>
-						<textarea name="message" id="message" aria-labelledby="message"></textarea>
+						<label for="message" id="message">Votre message</label>
+						<textarea name="message" id="message_input" aria-labelledby="message"></textarea>
 					</div>
-          <button class="contact_button" aria-labelledby="Send">Envoyer</button>
+          <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>

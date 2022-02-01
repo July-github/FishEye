@@ -2,7 +2,7 @@
 
 /***** Email validation *****/  
 function validateEmail(mail) {
-  const inputEmail = document.getElementById('email');
+  const inputEmail = document.getElementById('email_input');
   const errorEmail = document.querySelector('#mail');
   //regex creation
   const regexEmail = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/g;
@@ -22,7 +22,7 @@ function validateEmail(mail) {
 
 export function listenToMail(){
   //getting field email
-  const mail = document.querySelector('#email');
+  const mail = document.querySelector('#email_input');
   
   mail.addEventListener("input", function() {
       validateEmail(this);
@@ -40,7 +40,8 @@ function displayModal() {
     modal.style.display = "block";
     main.style.opacity = "0.5";
     close.focus();
-    main.setAttribute('aria-hidden', 'true');
+    modal.setAttribute('aria-modal', 'true');
+    //main.setAttribute('aria-hidden', 'true');
     main.setAttribute('tabindex', '-1');
     legend.innerHTML = 'Contactez-moi </br>' + name;
 }
@@ -54,7 +55,8 @@ function closeModal() {
     modal.style.display = "none";
     main.style.opacity = "1";
     contact.focus();
-    main.setAttribute('aria-hidden', 'false');
+    modal.setAttribute('aria-modal', 'false');
+    //main.setAttribute('aria-hidden', 'false');
     main.removeAttribute('tabindex');
     legend.innerHTML = "";
 }
@@ -86,10 +88,10 @@ export function escapeModal(){
 
 /***** Sending infos to console *****/  
 function consoleFormInput(){
-    const firstname = document.querySelector('#firstname')
-    const lastname = document.querySelector('#lastname')
-    const mail = document.querySelector('#email')
-    const message = document.querySelector('#message')
+    const firstname = document.querySelector('#firstname_input')
+    const lastname = document.querySelector('#lastname_input')
+    const mail = document.querySelector('#email_input')
+    const message = document.querySelector('#message_input')
 
     console.log('Firstname : ' + firstname.value)
     console.log('Lastname : ' + lastname.value)

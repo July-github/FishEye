@@ -553,23 +553,25 @@ function photographerGrid(data){
 
 	const cardText = document.createElement('div');
 	cardText.setAttribute('class', 'picture_text');
-	const cardLikes = document.createElement('a');
-	cardLikes.setAttribute('class', 'likes');
-	cardLikes.setAttribute('aria-label', 'likes');
-	cardLikes.setAttribute('aria-described', 'Click to add 1 like');
-	cardLikes.setAttribute('href', '#');
-	const likesNumber = document.createElement('p');
-	likesNumber.setAttribute('class', 'like-picture');
-	const likesHeart = document.createElement('i');
-	likesHeart.setAttribute('class', 'fas fa-heart');
-	likesHeart.setAttribute('aria-label', 'likes');
 	const text = document.createElement('h3');
 	text.textContent = title;
+	const cardLikes = document.createElement('div');
+	cardLikes.setAttribute('class', 'likes');
+	const likesNumber = document.createElement('p');
+	likesNumber.setAttribute('class', 'like-picture');
+	const cardHeart = document.createElement('a');
+	cardHeart.setAttribute('href', '#');
+	cardHeart.setAttribute('aria-label', 'likes');
+	const likesHeart = document.createElement('i');
+	likesHeart.setAttribute('class', 'fas fa-heart');
+	cardHeart.appendChild(likesNumber);
+	cardHeart.appendChild(likesHeart);
+	cardLikes.appendChild(cardHeart)
 	cardText.appendChild(text);
 	likesNumber.textContent = likes;
 	const likesText = cardText.appendChild(cardLikes);
 	likesText.appendChild(likesNumber);
-	likesText.appendChild(likesHeart);
+	likesText.appendChild(cardHeart);
 	card.appendChild(cardText);
 
 	return card
@@ -640,7 +642,7 @@ export async function displaySumLikes(){
 			return a+b;
 		}, 0)
 
-	likeMediasDOM.innerHTML = sum + ' <i class="fas fa-heart" aria-label="sum of likes"></i>';
+	likeMediasDOM.innerHTML = sum + ' <i class="fas fa-heart" aria-label="likes sum"></i>';
 
 	return sum
 }
