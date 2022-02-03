@@ -5,6 +5,11 @@
     height: 300px;
     margin: 0 100px;
     padding: 0 50px;
+
+    .contact_button:hover, &:focus{
+            background-color: #DB8876;
+            color: black;
+    }
 }
 
 button {
@@ -18,11 +23,6 @@ button {
     background-color: #901C1C;
     border-radius: 5px;
     cursor: pointer;
-
-    &:hover, &:focus{
-        background-color: #DB8876;
-        color: black;   
-    }
 }
 
 .contact_button{

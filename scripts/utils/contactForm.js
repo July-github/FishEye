@@ -1,6 +1,6 @@
-// Contact modal
+/***** Contact modal *****/
 
-/***** Email validation *****/  
+// Email validation
 function validateEmail(mail) {
   const inputEmail = document.getElementById('email_input');
   const errorEmail = document.querySelector('#mail');
@@ -29,7 +29,7 @@ export function listenToMail(){
     });
 }
 
-/***** Display contact modal *****/  
+// Display contact modal
 function displayModal() {
     const modal = document.getElementById("contact_modal");
     const main = document.getElementById("main");
@@ -41,11 +41,11 @@ function displayModal() {
     main.style.opacity = "0.5";
     close.focus();
     modal.setAttribute('aria-modal', 'true');
-    //main.setAttribute('aria-hidden', 'true');
     main.setAttribute('tabindex', '-1');
     legend.innerHTML = 'Contactez-moi </br>' + name;
 }
 
+// Close contact modal
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     const main = document.getElementById("main");
@@ -56,11 +56,11 @@ function closeModal() {
     main.style.opacity = "1";
     contact.focus();
     modal.setAttribute('aria-modal', 'false');
-    //main.setAttribute('aria-hidden', 'false');
     main.removeAttribute('tabindex');
     legend.innerHTML = "";
 }
 
+// Listen to contact modal button
 export function listenToDisplayModal(){
   const display = document.getElementById('display_modal_mark')
   
@@ -78,7 +78,8 @@ export function listenToCloseModal(){
   })
 }
 
-export function escapeModal(){
+// Escape contact modal with esc key
+function escapeModal(){
   document.addEventListener('keyup', function(e){
     if(e.key === 27 || e.key === 'Esc' || e.key === 'Escape'){
       closeModal();
@@ -86,7 +87,7 @@ export function escapeModal(){
   })
 }
 
-/***** Sending infos to console *****/  
+// Sending infos to console
 function consoleFormInput(){
     const firstname = document.querySelector('#firstname_input')
     const lastname = document.querySelector('#lastname_input')

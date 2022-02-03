@@ -1,3 +1,4 @@
+/***** Medias templates creation *****/
 export class PictureCard {
     constructor(data){
         this._image = data.image

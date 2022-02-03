@@ -1,7 +1,5 @@
-//Display lightbox
-
 /***** Display lightbox *****/
-import {Media} from '../factories/picture.js';
+import {Media} from '../factories/media.js';
 
 // Template creation
 function photographerGallery(data){
@@ -16,7 +14,8 @@ function photographerGallery(data){
 	return boxSlide
 }
 
-async function displayLightbox(data){
+// Display lightbox
+function displayLightbox(data){
 
     const pictureGallery = document.querySelector('#lightbox > #box');
     const cardMedia = photographerGallery(data);
@@ -30,12 +29,14 @@ async function displayLightbox(data){
     close.focus();
 }
 
+// Clear lightbox
 function resetLightbox(){
 	const boxSlide = document.querySelector('#box');
     boxSlide.innerHTML = '';
 }
 
-export async function listenToDisplayLightbox(data) {
+// Listen to click to display lightbox
+export function listenToDisplayLightbox(data) {
 
     const cards = [...document.querySelectorAll('.Media')];
     const lightbox = document.getElementById('lightbox');
@@ -49,34 +50,69 @@ export async function listenToDisplayLightbox(data) {
             backMain.style.display = "none";
 
             displayLightbox(data[n]);
+            goToNext();
+            goToPrevious();
 
             // Go to next picture
-            goNext.addEventListener('click', function(){
-                resetLightbox();
-                if(n === cards.length-1){
-                    n = 0    
-                }else{
-                    n = n+1
-                }
-                displayLightbox(data[n]);
-            })
+            function goToNext(){
+                goNext.addEventListener('click', function(){
+                    resetLightbox();
+                    if(n === cards.length-1){
+                        n = 0    
+                    }else{
+                        n = n+1
+                    }
+                    displayLightbox(data[n]);
+                })
+            }
 
             // Go to previous picture
-            goPrevious.addEventListener('click', function(){
-                resetLightbox();
-                if(n === 0){
-                    n = cards.length-1
-                }else{
-                    n = n-1
+            function goToPrevious(){
+                goPrevious.addEventListener('click', function(){
+                    resetLightbox();
+                    if(n === 0){
+                        n = cards.length-1
+                    }else{
+                        n = n-1
+                    }
+                    displayLightbox(data[n]);
+                })
+            }
+
+            // Listen to keypress
+            lightbox.addEventListener('keydown', function(e){
+
+                if (e.key === 'ArrowLeft') {
+                    resetLightbox();
+                    if(n === 0){
+                        n = cards.length-1
+                    }else{
+                        n = n-1
+                    }
+                    displayLightbox(data[n]);
                 }
-                displayLightbox(data[n]);
+
+                if (e.key === 'Escape'){
+                    closeLightbox();
+                }
+
+                if (e.key === 'ArrowRight'){
+                    resetLightbox();
+                    if(n === cards.length-1){
+                        n = 0    
+                    }else{
+                        n = n+1
+                    }
+                    displayLightbox(data[n]);
+                }
             })
         })
+        
     listenToCloseLightbox()
     }
 }
 
-/***** Close lightbox *****/
+// Close lightbox
 function closeLightbox() {
     const lightbox = document.getElementById("lightbox");
     const backMain = document.querySelector('main');
@@ -89,6 +125,7 @@ function closeLightbox() {
     firstPicture.focus();
 }
 
+// Listen to click to close lightbox
 function listenToCloseLightbox(){
     const close = document.querySelector("#close_lightbox");
 

@@ -1,3 +1,5 @@
+/***** Constructor for picture media *****/
+
 export class Picture{
     constructor(data){
         this._image = data.image;

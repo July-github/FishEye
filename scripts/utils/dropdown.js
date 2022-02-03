@@ -1,6 +1,6 @@
 /***** Display dropdown *****/
-//Display dropdown
 
+//Display dropdown
 export function displayDropbtn(){
 	const arrow = document.getElementById("arrow")
 
@@ -11,8 +11,7 @@ export function displayDropbtn(){
 	listenToDropdown();
 }
 
-//Navigate in the dropdown with arrows
-
+//Navigate in the dropdown with Tab
 function displayDropbtnOnFocus(){
 	const dropbtn = [...document.getElementsByClassName("dropbtn")]
 	const arrow = document.getElementById("arrow")
@@ -32,6 +31,7 @@ function displayDropbtnOnFocus(){
 
 }
 
+//Close dropdown button
 function closeDropbtnOnBlur(){
 	const dropbtn = [...document.getElementsByClassName("dropbtn")]
 	const arrow = document.getElementById("arrow")
@@ -43,7 +43,7 @@ function closeDropbtnOnBlur(){
 	listBox.setAttribute('aria-expanded', 'false');
 }
 
-
+//Listen to click on dropdown button
 export function listenToDropdown(){
 
 	const buttonList = document.querySelector('#pictures-sort')

@@ -1,4 +1,5 @@
-import {Picture} from'../models/image.js';
+/***** Factory pattern to switch between image & video *****/
+import {Picture} from'../models/picture.js';
 import {Video} from'../models/video.js';
 import {PictureCard, VideoCard} from '../template/pictureCard.js';
 

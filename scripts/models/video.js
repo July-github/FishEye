@@ -1,3 +1,5 @@
+/***** Constructor for video media *****/
+
 export class Video{
     constructor(data){
         this._video = data.video;

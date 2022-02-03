@@ -2,7 +2,8 @@
 import {displayPictures, computeLikes} from './photographer_grid.js';
 import {listenToDisplayLightbox} from './lightbox.js';
 
-export async function sortPictures(data){    
+//Sort click listening
+export function sortPictures(data){    
     const likesSort = document.getElementById('Likes');
     const dateSort = document.getElementById('Date');
     const titleSort = document.getElementById('Title');
@@ -31,7 +32,8 @@ export async function sortPictures(data){
     });
 }
 
-async function sortByLikes(data){
+//Sort functions
+function sortByLikes(data){
     data.sort(function compare(a, b) {
         if (a.likes < b.likes){
             return 1;
