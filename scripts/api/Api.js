@@ -7,7 +7,7 @@ export class Api {
     }
 
     async get(){
-        return fetch('../data/photographers.json')
+        return fetch('/../data/photographers.json')
         .then(res => {
             if (!res.ok) {
                 throw new Error("HTTP error " + res.status);
