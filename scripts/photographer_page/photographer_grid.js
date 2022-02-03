@@ -47,7 +47,7 @@ function filterPictures(datas){
 //Get photographer's datas
 export async function getUserMedias(){    
     //Get photographer's datas
-    const photographer = new Api('../data/photographers.json');
+    const photographer = new Api();
     const medias = await photographer.get();
     const pics = medias.media;
 

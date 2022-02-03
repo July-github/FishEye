@@ -38,7 +38,7 @@ function photographerFactory(data) {
 
 //Display photographers' icons
 async function displayData() {
-    const photographer = new Api('../data/photographers.json');
+    const photographer = new Api();
     const medias = await photographer.get();
     const photographersDatas = medias.photographers;
     const photographersSection = document.querySelector(".photographer_section");

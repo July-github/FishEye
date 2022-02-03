@@ -47,7 +47,7 @@ export async function displayHeaderData() {
     const photographersHeader = document.querySelector(".photograph-header");
     
     //Get photographer's datas
-    const photographer = new Api('../data/photographers.json');
+    const photographer = new Api();
     const medias = await photographer.get();
     const photographerDatas = medias.photographers;
 
