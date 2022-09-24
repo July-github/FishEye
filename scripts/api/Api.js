@@ -7,7 +7,7 @@ export class Api {
     }
 
     async get(){
-        return fetch('https://github.com/July-github/JulieHeckler_6_19122021/blob/master/data/photographers.json')
+        return fetch('../../data/photographers.json')
         .then(res => {
             if (!res.ok) {
                 throw new Error("HTTP error " + res.status);
