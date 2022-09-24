@@ -4,4 +4,4 @@ FishEye - Projet 6 OpenClassrooms
 
 Site accessible de photographes indépendants
 
-GitHub Pages: https://july-github.github.io/JulieHeckler_6_19122021/ 
+GitHub Pages: https://july-github.github.io/FishEye/ 
